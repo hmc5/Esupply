@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        /* Reset some default styles */
+        body, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* Banner styling */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #2B4A94;
+            border-bottom: 1px solid #fff;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 60px; /* Increased logo size */
+        }
+
+        /* Navigation bar styling */
+        .navigation ul {
+            display: flex;
+            gap: 15px; /* Reduced gap for mobile */
+            background-color: #2B4A94;
+        }
+
+        .navigation ul li a {
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            font-size: 14px; /* Smaller font for mobile */
+            padding: 8px 12px; /* Add padding for the box */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #a5cdf6; /* Light blue on hover */
+            color: #2B4A94; /* Dark blue text on hover */
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .mySlides, .mySlides2 {
+            display: none;
+        }
+
+        .slideshow-container, .slideshow-container2 {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        h2 {
+            font-family: Inter, sans-serif;
+            font-weight: bold;
+            color: #2B4A94;
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            font-size: 24px; /* Smaller font for mobile */
+            padding: 0 10px; /* Add padding for mobile */
+        }
+
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .image-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow wrapping for mobile */
+        }
+
+        .image-grid img {
+            width: 24%;
+            border-radius: 5px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot, .dot2 {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover, .dot2:hover {
+            background-color: #717171;
+        }
+
+        /* Media queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .logo img {
+                height: 50px; /* Slightly smaller logo for mobile */
+            }
+
+            .navigation ul {
+                display: none; /* Hide navigation by default on mobile */
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #2B4A94; /* Blue background */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                z-index: 1000; /* Ensure it appears above other content */
+            }
+
+            .navigation ul.active {
+                display: flex; /* Show navigation when active */
+            }
+
+            .navigation ul li a {
+                color: #ffffff; /* White text */
+                background-color: transparent; /* Remove background from links */
+                padding: 8px 12px; /* Add padding for the box */
+                border-radius: 5px; /* Rounded corners */
+            }
+
+            .navigation ul li a:hover {
+                background-color: #b1d5f8; /* Light blue on hover */
+                color: #2B4A94; /* Dark blue text on hover */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu */
+            }
+
+            .image-grid {
+                flex-direction: row; /* Keep images in a row */
+                justify-content: space-around; /* Space images evenly */
+            }
+
+            .image-grid img {
+                width: 48%; /* Show 2 images at once on mobile */
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 20px; /* Smaller font for mobile */
+            }
+        }
+        /* Application grid styling */
+        .application-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .app-item {
+            width: calc(25% - 20px); /* 4 items in a row on desktop */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-item img {
+            width: 100px; /* Adjust icon size */
+            height: 100px;
+            margin-bottom: 30px;
+        }
+
+        .app-item p {
+            color: red;
+            font-weight: bold;
+            margin: 0;
+            font-family: Instrument Sans,sans-serif;
+            font-size: 20px;
+        }
+
+        /* Hover effect for app items */
+        .app-item:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Media queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .app-item {
+                width: calc(50% - 20px); /* 2 items in a row on mobile */
+            }
+
+            .app-item img {
+                width: 40px; /* Smaller icons for mobile */
+                height: 40px;
+            }
+
+            .app-item p {
+                font-size: 14px; /* Smaller text for mobile */
+            }
+        }
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #2B4A94; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .footer .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .footer .contacts, .footer .sites {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #FFD700; /* Gold color on hover */
+        }
+
+        .footer .certification {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            background-color: #2B4A94; /* Dark purple */
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            border-top: 1px solid #FFD700; /* Gold border */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .contacts, .footer .sites {
+                text-align: center;
+            }
+
+            .footer .logo, .footer .certification {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    </head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP logo">
+        </div>
+        <nav class="navigation">
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Top Carousel (Single Big Image) -->
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2025-03-09-131048-1.png" alt="Your one stop reliable supplier.">
+        </div>
+        <div class="mySlides">
+            <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2025-02-27-212346-1.png" alt="We sell various types of goods such as wire harness.">
+        </div>
+        <div class="mySlides">
+            <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2025-02-27-212401-1.png" alt="We have sources from a wide range of countries">
+        </div>
+        <a class="prev" onclick="plusSlides(-1, 'top')">❮</a>
+        <a class="next" onclick="plusSlides(1, 'top')">❯</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1, 'top')"></span> 
+        <span class="dot" onclick="currentSlide(2, 'top')"></span> 
+        <span class="dot" onclick="currentSlide(3, 'top')"></span> 
+    </div>
+    <br><br><br><br><br><br>
+    <h2>Featured Products</h2>
+    <br><br>
+    <!-- Bottom Carousel (Image Grid) -->
+    <div class="slideshow-container2">
+        <div class="mySlides2">
+            <div class="image-grid">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164051.png" alt="JST">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164103.png" alt="Molex">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164118.png" alt="TE">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164133.png" alt="Hirose">
+            </div>
+        </div>
+        <div class="mySlides2">
+            <div class="image-grid">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164143.png" alt="Yazaki">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164149.png" alt="Sumitomo">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164155.png" alt="IKIET">
+                <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164217.png" alt="APTIV">
+            </div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1, 'bottom')">❮</a>
+        <a class="next" onclick="plusSlides(1, 'bottom')">❯</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot2" onclick="currentSlide(1, 'bottom')"></span>
+        <span class="dot2" onclick="currentSlide(2, 'bottom')"></span>
+    </div>
+
+    <script>
+        // Initialize slide indices for both carousels
+        let slideIndexTop = 1;
+        let slideIndexBottom = 1;
+        let slideIntervalTop;
+
+        // Show initial slides
+        showSlides(slideIndexTop, 'top');
+        showSlides(slideIndexBottom, 'bottom');
+
+        // Start auto-slide for the top carousel only
+        autoSlide('top');
+
+        // Function to navigate slides
+        function plusSlides(n, carousel) {
+            if (carousel === 'top') {
+                clearTimeout(slideIntervalTop);
+                showSlides(slideIndexTop += n, 'top');
+                autoSlide('top');
+            } else if (carousel === 'bottom') {
+                showSlides(slideIndexBottom += n, 'bottom');
+            }
+        }
+
+        // Function to set current slide
+        function currentSlide(n, carousel) {
+            if (carousel === 'top') {
+                clearTimeout(slideIntervalTop);
+                showSlides(slideIndexTop = n, 'top');
+                autoSlide('top');
+            } else if (carousel === 'bottom') {
+                showSlides(slideIndexBottom = n, 'bottom');
+            }
+        }
+
+        // Function to display slides
+        function showSlides(n, carousel) {
+            let slides, dots;
+            if (carousel === 'top') {
+                slides = document.getElementsByClassName("mySlides");
+                dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndexTop = 1; }
+                if (n < 1) { slideIndexTop = slides.length; }
+            } else if (carousel === 'bottom') {
+                slides = document.getElementsByClassName("mySlides2");
+                dots = document.getElementsByClassName("dot2");
+                if (n > slides.length) { slideIndexBottom = 1; }
+                if (n < 1) { slideIndexBottom = slides.length; }
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[carousel === 'top' ? slideIndexTop - 1 : slideIndexBottom - 1].style.display = "block";
+            dots[carousel === 'top' ? slideIndexTop - 1 : slideIndexBottom - 1].className += " active";
+        }
+
+        // Function to auto-slide (only for the top carousel)
+        function autoSlide(carousel) {
+            if (carousel === 'top') {
+                slideIntervalTop = setTimeout(function() {
+                    plusSlides(1, 'top');
+                }, 7500);
+            }
+        }
+
+        // Function to toggle mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('.navigation ul');
+            nav.classList.toggle('active');
+        }
+
+    </script>
+    <br><br><br><br><br><br>
+    <h2>Featured Products</h2>
+    <br><br>
+    <div class="application-grid">
+        
+        <div class="app-item">
+            <img src="icons8-automobile-100.png" alt="Automobile">
+            <p>Automobile</p>
+        </div>
+        <div class="app-item">
+            <img src="assembly.png" alt="Industry">
+            <p>Industry</p>
+        </div>
+        <div class="app-item">
+            <img src="global-network.png" alt="Network">
+            <p>Network</p>
+        </div>
+        <div class="app-item">
+            <img src="thunderbolt.png" alt="Energy">
+            <p>Energy</p>
+        </div>
+        <div class="app-item">
+            <img src="stethoscope.png" alt="Medical">
+            <p>Medical</p>
+        </div>
+        <div class="app-item">
+            <img src="smart-house.png" alt="Smart home">
+            <p>Smart home</p>
+        </div>
+        <div class="app-item">
+            <img src="oven.png" alt="Home appliances">
+            <p>Home appliances</p>
+        </div>
+        <div class="app-item">
+            <img src="volume 1.png" alt="Audio & video">
+            <p>Audio & video</p>
+        </div>
+    </div>
+    <br><br><br><br>
+    <footer class="footer">
+        <img src="logo.png" alt="Company Logo" class="logo">
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:email@email">email@email</a></li>
+                <li><a href="tel:telephone-no">telephone no</a></li>
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="#">Home page</a></li>
+                <li><a href="#">About page</a></li>
+                <li><a href="#">Products page</a></li>
+                <li><a href="#">Offices page</a></li>
+                <li><a href="#">Contacts page</a></li>
+            </ul>
+        </div>
+        <img src="iso-certification.png" alt="ISO Certification" class="certification">
+    </footer>
+
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> Example Electronics Ltd. All rights reserved.
+    </div>
+
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

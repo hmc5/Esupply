@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<head>
+    <title>Our Offices</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* General styles */
+        body {
+            font-family: Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header styles */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #2B4A94;
+            border-bottom: 1px solid #fff;
+        }
+
+        .logo img {
+            height: 60px; /* Increased logo size */
+        }
+
+        .navigation ul {
+            display: flex;
+            gap: 15px; /* Reduced gap for mobile */
+            background-color: #2B4A94;
+        }
+
+        .navigation ul li a {
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            font-family: Instrument Sans, sans-serif;
+            font-size: 14px; /* Smaller font for mobile */
+            padding: 8px 12px; /* Add padding for the box */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #a5cdf6; /* Light blue on hover */
+            color: #2B4A94; /* Dark blue text on hover */
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        /* Container for offices */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2B4A94;
+            font-family: Inter, sans-serif;
+            font-size: 32px; /* Larger font for desktop */
+        }
+
+        /* Office grid layout */
+        .office-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Office card styling */
+        .office-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .office-card:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Office card image styling */
+        .office-card img {
+            width: 80%; /* Ensure the image fills the container */
+            height: 400px; /* Fixed height for all images */
+            object-fit: cover; /* Ensures the image covers the container without distortion */
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .office-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2B4A94;
+            font-family: Inter, sans-serif;
+        }
+
+        .office-card p {
+            font-size: 16px;
+            color: #666;
+            font-family: Instrument Sans, sans-serif;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #2B4A94;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .footer .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .footer .contacts, .footer .sites {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #FFD700; /* Gold color on hover */
+        }
+
+        .footer .certification {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            background-color: #2B4A94; /* Dark purple */
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            border-top: 1px solid #FFD700; /* Gold border */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .office-grid {
+                grid-template-columns: 1fr; /* 1 office per row on mobile */
+            }
+
+            h1 {
+                font-size: 24px; /* Smaller font for mobile */
+            }
+
+            .navigation ul {
+                display: none; /* Hide navigation by default on mobile */
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #2B4A94; /* Blue background */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                z-index: 1000; /* Ensure it appears above other content */
+            }
+
+            .navigation ul.active {
+                display: flex; /* Show navigation when active */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .office-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 offices per row on desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP logo">
+        </div>
+        <nav class="navigation">
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="htmlhome.html">Home</a></li>
+                <li><a href="htmlabout.html">About</a></li>
+                <li><a href="htmlprod.html">Products</a></li>
+                <li><a href="htmloffi.html">Offices</a></li>
+                <li><a href="htmlcont.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <br><br><br><br>
+        <h1>Our Offices</h1>
+        <br><br>
+        <div class="office-grid">
+            <!-- Office 1 -->
+            <div class="office-card">
+                <img src="https://dwxbwps5boihg.cloudfront.net/property/pictures/256337/IMG_2207_NDANRkxm3sUF2dMvxsjx_large.JPG?v=1436263324" alt="10 Boulevard">
+                <h2>Kuala Lumpur (HQ)</h2>
+                <p>10 Boulevard, Block Camilia, C-3-43A Jln PJU 6A, 47400 PJ, Selangor, Malaysia</p>
+            </div>
+
+            <!-- Office 2 -->
+            <div class="office-card">
+                <img src="https://bangkokdevelopments.com/application/files/cache/thumbnails/76d7bda06006ae4f9afdf8feed0ec65d.jpg" alt="Forum Tower">
+                <h2>Bangkok (Head Supply chain)</h2>
+                <p>Forum Tower 184/225 Ratchadapisek Rd, Khwaeng Huai Khwang, Keht Huai Khwang, Bangkok 10310, Thailand.</p>
+            </div>
+
+            <!-- Office 3 -->
+            <div class="office-card">
+                <img src="https://example.com/shenzhen.jpg" alt="Shenzhen Office">
+                <h2>Shenzhen (Head Supply chain)</h2>
+                <p>6D1C, 6th floor, Tianji CD Building, Tian An Cyber Park, Futian District, Shenzhen, China 518040.</p>
+            </div>
+
+            <!-- Office 4 -->
+            <div class="office-card">
+                <img src="https://example.com/ningbo.jpg" alt="Ningbo Office">
+                <h2>Ningbo</h2>
+                <p>Eastern Business Centre, 15th floor room 1508 no.5, Ningbo, China</p>
+            </div>
+
+            <!-- Office 5 -->
+            <div class="office-card">
+                <img src="https://example.com/hochiminh.jpg" alt="Ho Chi Minh City Office">
+                <h2>Ho Chi Minh City</h2>
+                <p>5th Floor, No. 15 Tran Khac Chan, Tan Dinh Ward, District 1, Ho Chi Minh City, Viet Nam.</p>
+            </div>
+
+            <!-- Office 6 -->
+            <div class="office-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeuoyH_l6vl0GxIhACEzLefFGagoX0-mZC8w&s" alt="Gravitas Business Park">
+                <h2>Penang</h2>
+                <p>Gravitas Business Park, Unit B2-3-20, Lorong Pauh Jaya 1/3, Taman Pauh Jaya, 13500 Permatang Pauh, Penang, Malaysia</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <img src="Screenshot 2025-02-22 164034.png" alt="Esp Logo" class="logo">
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:email@email">email@email</a></li>
+                <li><a href="tel:telephone-no">telephone no</a></li>
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="htmlhome.html">Home page</a></li>
+                <li><a href="htmlabout.html">About page</a></li>
+                <li><a href="htmlprod.html">Products page</a></li>
+                <li><a href="htmloffi.html">Offices page</a></li>
+                <li><a href="htmlcont.html">Contacts page</a></li>
+            </ul>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+    </footer>
+
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
+    </div>
+
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Function to toggle mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('.navigation ul');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

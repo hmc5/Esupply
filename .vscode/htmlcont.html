@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default styles */
+        body, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* Banner styling */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #2B4A94;
+            border-bottom: 1px solid #fff;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 60px; /* Increased logo size */
+        }
+
+        /* Navigation bar styling */
+        .navigation ul {
+            display: flex;
+            gap: 15px; /* Reduced gap for mobile */
+            background-color: #2B4A94;
+        }
+
+        .navigation ul li a {
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            font-size: 14px; /* Smaller font for mobile */
+            padding: 8px 12px; /* Add padding for the box */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #a5cdf6; /* Light blue on hover */
+            color: #2B4A94; /* Dark blue text on hover */
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+
+        h1 {
+            color: #2B4A94;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center; /* Center-align h1 */
+        }
+
+        /* Header section with contact details */
+        .header-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center-align content */
+        }
+
+        .header-section .contact-details {
+            margin-top: 20px; /* Add space between h1 and contact details */
+        }
+
+        .header-section .contact-details p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #2B4A94;
+        }
+
+        .header-section .contact-details a {
+            color: #2B4A94;
+            text-decoration: none;
+        }
+
+        .header-section .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form container styling */
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center-align form */
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #2B4A94;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .footer .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .footer .contacts, .footer .sites {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #FFD700; /* Gold color on hover */
+        }
+
+        .footer .certification {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            background-color: #2B4A94; /* Dark purple */
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            border-top: 1px solid #FFD700; /* Gold border */
+        }
+
+        /* Media queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .logo img {
+                height: 50px; /* Slightly smaller logo for mobile */
+            }
+
+            h1 {
+                font-size: 28px; /* Smaller font for mobile */
+            }
+
+            .navigation ul {
+                display: none; /* Hide navigation by default on mobile */
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #2B4A94; /* Blue background */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                z-index: 1000; /* Ensure it appears above other content */
+            }
+
+            .navigation ul.active {
+                display: flex; /* Show navigation when active */
+            }
+
+            .navigation ul li a {
+                color: #ffffff; /* White text */
+                background-color: transparent; /* Remove background from links */
+                padding: 8px 12px; /* Add padding for the box */
+                border-radius: 5px; /* Rounded corners */
+            }
+
+            .navigation ul li a:hover {
+                background-color: #b1d5f8; /* Light blue on hover */
+                color: #2B4A94; /* Dark blue text on hover */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu */
+            }
+
+            .form-container iframe {
+                width: 100%; /* Make the form responsive */
+                height: auto; /* Adjust height automatically */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP logo">
+        </div>
+        <nav class="navigation">
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="htmlhome.html">Home</a></li>
+                <li><a href="htmlabout.html">About</a></li>
+                <li><a href="htmlproducts.html">Products</a></li>
+                <li><a href="#">Offices</a></li>
+                <li><a href="htmlcontact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br>
+
+    <!-- Header Section with Contact Details -->
+    <div class="header-section">
+        <h1>Contact Us</h1>
+        <div class="contact-details">
+            <p><strong>Email:</strong> <a href="mailto:email@example.com">email@example.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
+            <p><strong>Address:</strong> 123 Example Street, City, Country</p>
+        </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQcpHrYId4vuNFsDMWAovLMebaNY70rBjVWE0067XRoivNfw/viewform?embedded=true" width="1000" height="818" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="logo">
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:email@example.com">email@example.com</a></li>
+                <li><a href="tel:+1234567890">+123 456 7890</a></li>
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="htmlhome.html">Home page</a></li>
+                <li><a href="htmlabout.html">About page</a></li>
+                <li><a href="htmlproducts.html">Products page</a></li>
+                <li><a href="#">Offices page</a></li>
+                <li><a href="htmlcontact.html">Contacts page</a></li>
+            </ul>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+    </footer>
+
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
+    </div>
+
+    <script>
+        // Function to toggle mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('.navigation ul');
+            nav.classList.toggle('active');
+        }
+
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

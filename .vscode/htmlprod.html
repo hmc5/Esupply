@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default styles */
+        body, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* Banner styling */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #2B4A94;
+            border-bottom: 1px solid #fff;
+        }
+
+        /* Logo styling */
+        .logo img {
+            height: 60px; /* Increased logo size */
+        }
+
+        /* Navigation bar styling */
+        .navigation ul {
+            display: flex;
+            gap: 15px; /* Reduced gap for mobile */
+            background-color: #2B4A94;
+        }
+
+        .navigation ul li a {
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            font-family: Instrument Sans,sans-serif;
+            font-size: 14px; /* Smaller font for mobile */
+            padding: 8px 12px; /* Add padding for the box */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #a5cdf6; /* Light blue on hover */
+            color: #2B4A94; /* Dark blue text on hover */
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+        h1 {
+            color: #2B4A94;
+            font-size: 36px;
+            margin-bottom: 20px;
+            padding-left: 20px; /* Add left padding to align text slightly to the left */
+            max-width: 1000px; /* Match the max-width of other headings for consistency */
+            margin-left: auto; /* Center the h1 within the max-width */
+            margin-right: auto; /* Center the h1 within the max-width */
+        }
+        @media only screen and (max-width: 768px) {
+            h1 {
+                padding-left: 10px; /* Reduce padding for smaller screens */
+                font-size: 28px; /* Smaller font size for mobile */
+            }
+        }
+        .app-item p {
+            color: red;
+            font-weight: bold;
+            margin: 0;
+            font-family: Instrument Sans,sans-serif;
+            font-size: 20px;
+        }
+        h2 {
+            font-family: Inter, sans-serif;
+            font-weight: bold;
+            color: #2B4A94;
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            font-size: 24px; /* Smaller font for mobile */
+            padding: 0 10px; /* Add padding for mobile */
+        }
+
+        /* Products grid styling */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .product-item {
+            width: calc(25% - 20px); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item img {
+            width: 120px; /* Adjust icon size */
+            height: 120px;
+            margin-bottom: 15px;
+        }
+
+        .product-item p {
+            color: red;
+            font-weight: bold;
+            margin: 0;
+            font-family: Instrument Sans, sans-serif;
+            font-size: 21px;
+        }
+
+        /* Hover effect for product items */
+        .product-item:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        /* Media queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .logo img {
+                height: 50px; /* Slightly smaller logo for mobile */
+            }
+            h1 {
+                font-size: 28px; /* Smaller font for mobile */
+            }
+            .navigation ul {
+                display: none; /* Hide navigation by default on mobile */
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #2B4A94; /* Blue background */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                z-index: 1000; /* Ensure it appears above other content */
+            }
+
+            .navigation ul.active {
+                display: flex; /* Show navigation when active */
+            }
+
+            .navigation ul li a {
+                color: #ffffff; /* White text */
+                background-color: transparent; /* Remove background from links */
+                padding: 8px 12px; /* Add padding for the box */
+                border-radius: 5px; /* Rounded corners */
+            }
+
+            .navigation ul li a:hover {
+                background-color: #b1d5f8; /* Light blue on hover */
+                color: #2B4A94; /* Dark blue text on hover */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu */
+            }
+
+            .product-item {
+                width: calc(50% - 20px); 
+            }
+
+            .product-item img {
+                width: 50px; /* Smaller icons for mobile */
+                height: 50px;
+            }
+
+            .product-item p {
+                font-size: 14px; /* Smaller text for mobile */
+            }
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #2B4A94;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .footer .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .footer .contacts, .footer .sites {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #FFD700; /* Gold color on hover */
+        }
+
+        .footer .certification {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            background-color: #2B4A94; /* Dark purple */
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            border-top: 1px solid #FFD700; /* Gold border */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .contacts, .footer .sites {
+                text-align: center;
+            }
+
+            .footer .logo, .footer .certification {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="logo">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP logo">
+        </div>
+        <nav class="navigation">
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="htmlhome.html">Home</a></li>
+                <li><a href="htmlabout.html">About</a></li>
+                <li><a href="htmlproducts.html">Products</a></li>
+                <li><a href="#">Offices</a></li>
+                <li><a href="htmlcont.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br>
+    <h1>Our Products</h1>
+    <br><br>
+    <div class="products-grid">
+        <!-- Product Items -->
+        <div class="product-item">
+            <img src="terminal.jpg" alt="Terminals">
+            <p>Terminals</p>
+        </div>
+        <div class="product-item">
+            <img src="connector.webp" alt="Connectors">
+            <p>Connectors</p>
+        </div>
+        <div class="product-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaU0LnnvPpd9eVJv8cLoyj0rkiqcjsMAA6Cw&s" alt="integrated circuits">
+            <p>Integrated Circuits</p>
+        </div>
+        <div class="product-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO1xapFGMng_IXDh2NxqLEND5x6-AYMqQ5Q&s" alt="wave filter">
+            <p>Wave Filters</p>
+        </div>
+        <div class="product-item">
+            <img src="sensor.jpg" alt="sensor">
+            <p>Sensor</p>
+        </div>
+        <div class="product-item">
+            <img src="https://my.element14.com/productimages/large/en_US/19C6721-40.jpg" alt="Switch">
+            <p>Switch</p>
+        </div>
+        <div class="product-item">
+            <img src="https://electronation.pk/wp-content/uploads/2023/05/103-Crystal-12Mhz-1.png" alt="crystal oscillator">
+            <p>Crystal Oscillator</p>
+        </div>
+        <div class="product-item">
+            <img src="https://sigma.octopart.com/147907772/image/Broadcom-SP000063855.jpg" alt="optoelectronics">
+            <p>Optoelectronics</p>
+        </div>
+        <div class="product-item">
+            <img src="curcuit mprotection.webp" alt="circuit protection">
+            <p>Circuit Protection</p>
+        </div>
+        <div class="product-item">
+            <img src="microprocessor.webp" alt="microprocessor">
+            <p>Microprocessor</p>
+        </div>
+        <div class="product-item">
+            <img src="diodes.jpg" alt="diodes">
+            <p>Diodes</p>
+        </div>
+        <div class="product-item">
+            <img src="cable tie.webp" alt="cable tie">
+            <p>Cable Tie</p>
+        </div>
+        <div class="product-item">
+            <img src="ferrite core.jpg" alt="ferrite core">
+            <p>Ferrite Core</p>
+        </div>
+        <div class="product-item">
+            <img src="tools.png" alt="tools">
+            <p>Tools</p>
+        </div>
+        <div class="product-item">
+            <img src="power.jpg" alt="power">
+            <p>Power</p>
+        </div>
+        <div class="product-item">
+            <img src="led.jpg" alt="LED Lighting">
+            <p>LED Lighting</p>
+        </div>
+        <div class="product-item">
+            <img src="relay.png" alt="relay">
+            <p>Relay</p>
+        </div>
+        <div class="product-item">
+            <img src="transistor.jpg" alt="Transistors">
+            <p>Transistors</p>
+        </div>
+        <div class="product-item">
+            <img src="resistonce capasitor.jpg" alt="resistance capacitor">
+            <p>Resistance Capacitor</p>
+        </div>
+        <div class="product-item">
+            <img src="https://www.icschip.com/photo/py36535549-irfb4310pbf_100v_130a_fet_hexfet_power_mosfet_irfb7440pbf_40v_120a.jpg" alt="discrete semiconductors">
+            <p>Discrete Semiconductors</p>
+        </div>
+        
+    </div>
+    <br><br><br><br><br>
+    <footer class="footer">
+        <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="logo">
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:email@email">email@email</a></li>
+                <li><a href="tel:telephone-no">telephone no</a></li>
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="htmlhome.html">Home page</a></li>
+                <li><a href="htmlabout.html">About page</a></li>
+                <li><a href="htmlproducts.html">Products page</a></li>
+                <li><a href="#">Offices page</a></li>
+                <li><a href="htmlcont.html">Contacts page</a></li>
+            </ul>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+    </footer>
+
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
+    </div>
+
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Function to toggle mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('.navigation ul');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
+
