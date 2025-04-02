@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>E-Supply Contact Us</title>
     <style>
         /* Reset some default styles */
         body, ul, li, a {
@@ -24,8 +24,18 @@
         }
 
         /* Logo styling */
-        .logo img {
-            height: 60px; /* Increased logo size */
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
+        }
+        /* Logo styling */
+       
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
         }
 
         /* Navigation bar styling */
@@ -123,11 +133,16 @@
             align-items: flex-start;
             padding: 40px 20px;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            
         }
 
         .footer .logo {
             width: 100px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
         .footer .contacts, .footer .sites {
@@ -139,12 +154,14 @@
             margin-bottom: 15px;
             font-size: 18px;
             color: #FFD700; /* Gold color for headings */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul li {
@@ -164,8 +181,94 @@
         .footer .certification {
             width: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; /* Better for alignment */
+            justify-content: center;
+            align-items: center;
+            width: auto; /* Remove fixed width */
+        }
+
+    
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+        /* Footer Logo Image */
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+ 
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
         .footer-bottom {
             text-align: center;
             background-color: #2B4A94; /* Dark purple */
@@ -175,62 +278,20 @@
             border-top: 1px solid #FFD700; /* Gold border */
         }
 
-        /* Media queries for mobile responsiveness */
-        @media only screen and (max-width: 768px) {
-            .logo img {
-                height: 50px; /* Slightly smaller logo for mobile */
-            }
-
-            h1 {
-                font-size: 28px; /* Smaller font for mobile */
-            }
-
-            .navigation ul {
-                display: none; /* Hide navigation by default on mobile */
-                flex-direction: column;
-                gap: 10px;
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                background-color: #2B4A94; /* Blue background */
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                z-index: 1000; /* Ensure it appears above other content */
-            }
-
-            .navigation ul.active {
-                display: flex; /* Show navigation when active */
-            }
-
-            .navigation ul li a {
-                color: #ffffff; /* White text */
-                background-color: transparent; /* Remove background from links */
-                padding: 8px 12px; /* Add padding for the box */
-                border-radius: 5px; /* Rounded corners */
-            }
-
-            .navigation ul li a:hover {
-                background-color: #b1d5f8; /* Light blue on hover */
-                color: #2B4A94; /* Dark blue text on hover */
-            }
-
-            .hamburger {
-                display: block; /* Show hamburger menu */
-            }
-
-            .form-container iframe {
-                height: 600px; /* Adjust height for mobile */
-            }
-
+        /* Responsive design */
+        @media (max-width: 768px) {
             .footer {
-                flex-direction: column; /* Stack footer content vertically */
+                flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
 
             .footer .contacts, .footer .sites {
                 text-align: center;
+            }
+
+            .footer .logo, .footer .certification {
+                margin-bottom: 30px;
             }
         }
     </style>
@@ -257,9 +318,10 @@
     <div class="header-section">
         <h1>Contact Us</h1>
         <div class="contact-details">
-            <p><strong>Email:</strong> <a href="mailto:email@example.com">email@example.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
-            <p><strong>Address:</strong> 123 Example Street, City, Country</p>
+            <p><strong>Email:</strong> <a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></p>
+            <p><strong>Phone Bangkok (Main):</strong> <a href="tel:+6622486096">+66-2-2486096</a></p>
+            <p><strong>Phone Kuala Lumpur:</strong> <a href="tel:+60374967524">+60-3-74967524</a></p>
+           
         </div>
     </div>
 
@@ -267,15 +329,20 @@
     <div class="form-container">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQcpHrYId4vuNFsDMWAovLMebaNY70rBjVWE0067XRoivNfw/viewform?embedded=true" width="100%" height="818" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-
+    <br><br><br><br><br>
     <!-- Footer -->
     <footer class="footer">
-        <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="logo">
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+        </div>
         <div class="contacts">
             <h3>Contacts</h3>
             <ul>
-                <li><a href="mailto:email@example.com">email@example.com</a></li>
-                <li><a href="tel:+1234567890">+123 456 7890</a></li>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+
+
             </ul>
         </div>
         <div class="sites">
@@ -288,7 +355,9 @@
                 <li><a href="htmlcont.html">Contacts page</a></li>
             </ul>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+        </div>
     </footer>
 
     <div class="footer-bottom">

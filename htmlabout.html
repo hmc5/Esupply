@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Supply About Us</title>
     <style>
         /* Reset some default styles */
         body, ul, li, a {
@@ -20,11 +23,18 @@
             border-bottom: 1px solid #fff;
         }
 
-        /* Logo styling */
-        .logo img {
-            height: 60px; /* Increased logo size */
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
         }
-
+        
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+        }
         /* Navigation bar styling */
         .navigation ul {
             display: flex;
@@ -54,6 +64,7 @@
             cursor: pointer;
             color: #ffffff;
         }
+        
 
         /* General styles */
         * {
@@ -127,17 +138,35 @@
             display: none;
         }
 
+        /* Logo container styling for partners section */
         .image-grid {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
         }
 
-        .image-grid img {
-            width: 24%;
-            border-radius: 5px;
-            height: 60px; /* Adjust height to make the carousel thinner */
-            object-fit: contain; /* Ensure images maintain their aspect ratio */
+        /* Individual logo styling with grey background for each */
+        .logo-container {
+            width: 22%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5; /* Grey background for each individual logo */
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+        }
+
+        /* Make the images within containers transparent */
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Make white backgrounds transparent using mix-blend-mode */
+            mix-blend-mode: multiply; /* This helps make white backgrounds transparent */
         }
 
         .prev, .next {
@@ -180,10 +209,23 @@
             background-color: #717171;
         }
 
+        /* Media Queries for Responsiveness */
+        @media only screen and (max-width: 768px) {
+            .logo-container {
+                width: 45%; /* Show 2 logos per row on tablet */
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .logo-container {
+                width: 90%; /* Nearly full width for images on very small screens */
+            }
+        }
+        
         /* Media queries for mobile responsiveness */
         @media only screen and (max-width: 768px) {
             .logo img {
-                height: 50px; /* Slightly smaller logo for mobile */
+                height: 70px; /* Slightly smaller logo for mobile but still larger than before */
             }
 
             .navigation ul {
@@ -239,14 +281,8 @@
             .image-section {
                 order: -1; /* Move images above text on mobile */
             }
-
-            .image-grid img {
-                width: 48%; /* Show 2 images per row on mobile */
-                margin-bottom: 10px;
-            }
         }
-
-        /* Footer styling */
+        
         .footer {
             background-color: #2B4A94;
             color: white;
@@ -255,11 +291,16 @@
             align-items: flex-start;
             padding: 40px 20px;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            
         }
 
         .footer .logo {
             width: 100px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
         .footer .contacts, .footer .sites {
@@ -271,12 +312,14 @@
             margin-bottom: 15px;
             font-size: 18px;
             color: #FFD700; /* Gold color for headings */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul li {
@@ -296,8 +339,94 @@
         .footer .certification {
             width: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+      
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; /* Better for alignment */
+            justify-content: center;
+            align-items: center;
+            width: auto; /* Remove fixed width */
         }
 
+
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+        /* Footer Logo Image */
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+        /* Fix image sizing inside these containers */
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
         .footer-bottom {
             text-align: center;
             background-color: #2B4A94; /* Dark purple */
@@ -353,7 +482,7 @@
                 E-Supply started off as a supplier of wire harnesses. In order to better serve our clients' needs, the company has now broadened its product line to encompass a variety of electronic components, including cables, IC chips, semiconductors, and more.
             </p>
             <p>
-                E-Supply has been in business for 11 years and now provides services to more than 300 clients in Southeast Asia. To provide effective support for all customer questions and concerns, we have set up warehouses and sales offices in strategic locations such as Thailand, China, Malaysia, Indonesia, Vietnam, Japan, and Singapore.
+                E-Supply has been in business for 13 years and now provides services to more than 500 clients in Southeast Asia. To provide effective support for all customer questions and concerns, we have set up warehouses and sales offices in strategic locations such as Thailand, China, Malaysia, Indonesia, Vietnam, Japan, and Singapore.
             </p>
         </div>
 
@@ -361,49 +490,59 @@
         <div class="image-section">
             <br>            
             <img src="bkksi.jpg" alt="Bangkok store image">
-            <img src="kuloi.jpg" alt="Kuala Lumpur office image">
+            <img src="bkkoi2.jpg" alt="Bangkok office image">
         </div>
     </div>
     <br><br><br><br><br><br>
     <h2>Our journey</h2>
     <br><br>
-    <img src="Screenshot 2025-03-09 131401.png" alt="ESP timeline" style="width: 100%; max-width: 1000px; display: block; margin: 0 auto;">
+    <img src="esp timeline.png" alt="ESP timeline" style="width: 100%; max-width: 1000px; display: block; margin: 0 auto;">
 
-    <!-- New Carousel Below Timeline -->
-    <br><br><br><br>
-    <h2>Our Partners</h2>
+    <!-- Our Customers -->
+    <br><br><br><br><br><br>
+    <h2>Our Customers</h2>
     <br><br>
     <div class="slideshow-container">
+        <!-- Modified structure to place each logo in its own container with grey background -->
         <div class="mySlides">
             <div class="image-grid">
-                <img src="daikin.jpg" alt="Daikin">
-                <img src="Epson-Logo.png" alt="Espon">
-                <img src="fujitsu-logo-png_seeklogo-58179.png" alt="Fujitsu">
-                <img src="Hitachi-logo.jpg" alt="Hitachi">
+                <div class="logo-container"><img src="daikin1.png" alt="Daikin"></div>
+                <div class="logo-container"><img src="fujitsu1.png" alt="Fujitsu"></div>
+                <div class="logo-container"><img src="hirachi1.png" alt="Hitachi"></div>
             </div>
         </div>
         <div class="mySlides">
             <div class="image-grid">
-                <img src="ford.png" alt="Ford">
-                <img src="midea.jpg" alt="Midea">
-                <img src="Toshiba_Logo_Design_History_Evolution_10_1024x1024.webp" alt="Toshiba">
-                <img src="mazda.png" alt="Mazda">
+                <div class="logo-container"><img src="ford.png" alt="Ford"></div>
+                <div class="logo-container"><img src="epson1.png" alt="Epson"></div>
+                <div class="logo-container"><img src="toshiba11.png" alt="Toshiba"></div>
             </div>
         </div>
         <div class="mySlides">
             <div class="image-grid">
-                <img src="toyota.png" alt="Toyota">
-                <img src="haier.webp" alt="Haier">
-                <img src="https://cdn1.sgliteasset.com/krafezee/images/brand/brand-5723/79duEb6663bf807115358_1673494641.png" alt="brother">
-                <img src="Sanyo_logo.svg.png" alt="Sanyo">
+                <div class="logo-container"><img src="midea.jpg" alt="Midea"></div>
+                <div class="logo-container"><img src="toyota.png" alt="Toyota"></div>
+                <div class="logo-container"><img src="mazda1.png" alt="Mazda"></div>
             </div>
         </div>
         <div class="mySlides">
             <div class="image-grid">
-                <img src="bosch.png" alt="Bosch">
-                <img src="ABB_logo.svg.png" alt="ABB">
-                <img src="preview-928x522.jpg" alt="Honda">
-                <img src="Mitsubishi-Electric-Logo.png" alt="Mitsubishi">
+                <div class="logo-container"><img src="bosch.png" alt="Bosch"></div>
+                <div class="logo-container"><img src="Honda-logo-name-min.jpg" alt="Honda"></div>
+                <div class="logo-container"><img src="mitsubishi-electric-logo-g4rjo8mjook1yws2-g4rjo8mjook1yws2.png" alt="Mitsubishi"></div>
+            </div>
+        </div>
+        <div class="mySlides">
+            <div class="image-grid">
+                <div class="logo-container"><img src="haier1.png" alt="Haier"></div>
+                <div class="logo-container"><img src="brother1.png" alt="Brother"></div>
+                <div class="logo-container"><img src="Sanyo_logo.svg.png" alt="Sanyo"></div>
+            </div>
+        </div>
+        <div class="mySlides">
+            <div class="image-grid">
+                <div class="logo-container"><img src="ABB_logo.svg.png" alt="ABB"></div>
+                
             </div>
         </div>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -415,15 +554,22 @@
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
         <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
     </div>
-    <br><br><br><br>
+    <br><br><br><br><br>
     <footer class="footer">
-        <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="logo">
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+        </div>
         <div class="contacts">
             <h3>Contacts</h3>
             <ul>
-                <li><a href="mailto:email@email">email@email</a></li>
-                <li><a href="tel:telephone-no">telephone no</a></li>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+  
+
             </ul>
         </div>
         <div class="sites">
@@ -436,12 +582,15 @@
                 <li><a href="htmlcont.html">Contacts page</a></li>
             </ul>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+        </div>
     </footer>
 
     <div class="footer-bottom">
         Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
     </div>
+
 
     <script>
         // Automatically update the copyright year

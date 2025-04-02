@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Supply Our Products</title>
     <style>
         /* Reset some default styles */
         body, ul, li, a {
@@ -21,8 +24,18 @@
         }
 
         /* Logo styling */
-        .logo img {
-            height: 60px; /* Increased logo size */
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
+        }
+        /* Logo styling */
+       
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
         }
 
         /* Navigation bar styling */
@@ -53,6 +66,13 @@
             font-size: 24px;
             cursor: pointer;
             color: #ffffff;
+        }
+        img {
+            width: 100%;
+            border-radius: 5px;
+            background-color: white;
+            mix-blend-mode: multiply; /* White becomes transparent */
+            filter: brightness(1.1) contrast(1.1); /* Enhances visibility */
         }
 
         /* General styles */
@@ -138,7 +158,16 @@
             transform: translateY(-5px); /* Slight lift on hover */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
         }
+        .products-grid .product-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide overflow for rectangular images */
+            border-radius: 5px;
+            background-color: #f5f5f5; /* Grey background */
+            padding: 10px; /* Add padding around the image */
 
+        }
         /* Media queries for mobile responsiveness */
         @media only screen and (max-width: 768px) {
             .logo img {
@@ -186,8 +215,8 @@
             }
 
             .product-item img {
-                width: 50px; /* Smaller icons for mobile */
-                height: 50px;
+                width: 100px; /* Smaller icons for mobile */
+                height: 100px;
             }
 
             .product-item p {
@@ -195,7 +224,6 @@
             }
         }
 
-        /* Footer styling */
         .footer {
             background-color: #2B4A94;
             color: white;
@@ -204,11 +232,16 @@
             align-items: flex-start;
             padding: 40px 20px;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            
         }
 
         .footer .logo {
             width: 100px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
         .footer .contacts, .footer .sites {
@@ -220,12 +253,14 @@
             margin-bottom: 15px;
             font-size: 18px;
             color: #FFD700; /* Gold color for headings */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul li {
@@ -245,8 +280,94 @@
         .footer .certification {
             width: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; /* Better for alignment */
+            justify-content: center;
+            align-items: center;
+            width: auto; /* Remove fixed width */
+        }
+
+
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+        /* Footer Logo Image */
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+        /* Fix image sizing inside these containers */
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
         .footer-bottom {
             text-align: center;
             background-color: #2B4A94; /* Dark purple */
@@ -290,101 +411,106 @@
             </ul>
         </nav>
     </header>
-    <br><br>
+    <br><br><br><br><br>
     <h1>Our Products</h1>
     <br><br>
     <div class="products-grid">
         <!-- Product Items -->
         <div class="product-item">
-            <img src="terminal.jpg" alt="Terminals">
-            <p>Terminals</p>
+            <br><img src="terminal.jpg" alt="Terminals"><br>
+            <p>Terminals</p><br>
         </div>
         <div class="product-item">
-            <img src="connector.webp" alt="Connectors">
-            <p>Connectors</p>
+            <br><img src="connector.webp" alt="Connectors"><br>
+            <p>Connectors</p><br>
         </div>
         <div class="product-item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaU0LnnvPpd9eVJv8cLoyj0rkiqcjsMAA6Cw&s" alt="integrated circuits">
-            <p>Integrated Circuits</p>
+            <br><img src="integreted circuits1.jpg" alt="integrated circuits"><br>
+            <p>Integrated Circuits</p><br>
         </div>
         <div class="product-item">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO1xapFGMng_IXDh2NxqLEND5x6-AYMqQ5Q&s" alt="wave filter">
-            <p>Wave Filters</p>
+            <br><img src="wave filter1.jpg" alt="wave filter"><br>
+            <p>Wave Filters</p><br>
         </div>
         <div class="product-item">
-            <img src="sensor.jpg" alt="sensor">
-            <p>Sensor</p>
+            <br><img src="sensor.jpg" alt="sensor"><br>
+            <p>Sensor</p><br>
         </div>
         <div class="product-item">
-            <img src="https://my.element14.com/productimages/large/en_US/19C6721-40.jpg" alt="Switch">
-            <p>Switch</p>
+            <br><img src="switch.jpg" alt="Switch"><br>
+            <p>Switch</p><br>
         </div>
         <div class="product-item">
-            <img src="https://electronation.pk/wp-content/uploads/2023/05/103-Crystal-12Mhz-1.png" alt="crystal oscillator">
-            <p>Crystal Oscillator</p>
+            <br><img src="co.png" alt="crystal oscillator"><br>
+            <p>Crystal Oscillator</p><br>
         </div>
         <div class="product-item">
-            <img src="https://sigma.octopart.com/147907772/image/Broadcom-SP000063855.jpg" alt="optoelectronics">
-            <p>Optoelectronics</p>
+            <br><img src="opto.jpg" alt="optoelectronics"><br>
+            <p>Optoelectronics</p><br>
         </div>
         <div class="product-item">
-            <img src="curcuit mprotection.webp" alt="circuit protection">
-            <p>Circuit Protection</p>
+            <br><img src="curcuit mprotection.webp" alt="circuit protection"><br>
+            <p>Circuit Protection</p><br>
         </div>
         <div class="product-item">
-            <img src="microprocessor.webp" alt="microprocessor">
-            <p>Microprocessor</p>
+            <br><img src="microprocessor.webp" alt="microprocessor"><br>
+            <p>Microprocessor</p><br>
         </div>
         <div class="product-item">
-            <img src="diodes.jpg" alt="diodes">
-            <p>Diodes</p>
+            <br><img src="diodes.jpg" alt="diodes"><br>
+            <p>Diodes</p><br>
         </div>
         <div class="product-item">
-            <img src="cable tie.webp" alt="cable tie">
-            <p>Cable Tie</p>
+            <br><img src="cable tie.webp" alt="cable tie"><br>
+            <p>Cable Tie</p><br>
         </div>
         <div class="product-item">
-            <img src="ferrite core.jpg" alt="ferrite core">
-            <p>Ferrite Core</p>
+            <br><img src="ferrite core.jpg" alt="ferrite core"><br>
+            <p>Ferrite Core</p><br>
         </div>
         <div class="product-item">
-            <img src="tools.png" alt="tools">
-            <p>Tools</p>
+            <br><img src="tools.png" alt="tools"><br>
+            <p>Tools</p><br>
         </div>
         <div class="product-item">
-            <img src="power.jpg" alt="power">
-            <p>Power</p>
+            <br><img src="power.jpg" alt="power"><br>
+            <p>Power</p><br>
         </div>
         <div class="product-item">
-            <img src="led.jpg" alt="LED Lighting">
-            <p>LED Lighting</p>
+            <br><img src="led.jpg" alt="LED Lighting"><br>
+            <p>LED Lighting</p><br>
         </div>
         <div class="product-item">
-            <img src="relay.png" alt="relay">
-            <p>Relay</p>
+            <br><img src="relay.png" alt="relay"><br>
+            <p>Relay</p><br>
         </div>
         <div class="product-item">
-            <img src="transistor.jpg" alt="Transistors">
-            <p>Transistors</p>
+            <br><img src="transistor.jpg" alt="Transistors"><br>
+            <p>Transistors</p><br>
         </div>
         <div class="product-item">
-            <img src="resistonce capasitor.jpg" alt="resistance capacitor">
-            <p>Resistance Capacitor</p>
+            <br><img src="resistonce capasitor.jpg" alt="resistance capacitor"><br>
+            <p>Resistance Capacitor</p><br>
         </div>
         <div class="product-item">
-            <img src="https://www.icschip.com/photo/py36535549-irfb4310pbf_100v_130a_fet_hexfet_power_mosfet_irfb7440pbf_40v_120a.jpg" alt="discrete semiconductors">
-            <p>Discrete Semiconductors</p>
+            <br><img src="discsem.webp" alt="discrete semiconductors"><br>
+            <p>Discrete Semiconductors</p><br>
         </div>
         
     </div>
     <br><br><br><br><br>
     <footer class="footer">
-        <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="logo">
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+        </div>
         <div class="contacts">
             <h3>Contacts</h3>
             <ul>
-                <li><a href="mailto:email@email">email@email</a></li>
-                <li><a href="tel:telephone-no">telephone no</a></li>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+
+
             </ul>
         </div>
         <div class="sites">
@@ -397,12 +523,15 @@
                 <li><a href="htmlcont.html">Contacts page</a></li>
             </ul>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+        </div>
     </footer>
 
     <div class="footer-bottom">
         Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
     </div>
+
 
     <script>
         // Automatically update the copyright year

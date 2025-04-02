@@ -1,24 +1,19 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <title>Our Offices</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Supply Our Offices</title>
     <style>
         /* Reset some default styles */
-        body, h1, h2, h3, p, ul, li, a {
+        body, ul, li, a {
             margin: 0;
             padding: 0;
             list-style: none;
             text-decoration: none;
         }
 
-        /* General styles */
-        body {
-            font-family: Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        /* Header styles */
+        /* Banner styling */
         .banner {
             display: flex;
             justify-content: space-between;
@@ -28,10 +23,21 @@
             border-bottom: 1px solid #fff;
         }
 
-        .logo img {
-            height: 60px; /* Increased logo size */
+        /* Logo styling */
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
+        }
+        
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
         }
 
+        /* Navigation bar styling */
         .navigation ul {
             display: flex;
             gap: 15px; /* Reduced gap for mobile */
@@ -41,7 +47,7 @@
         .navigation ul li a {
             color: #ffffff; /* White text */
             font-weight: bold;
-            font-family: Instrument Sans, sans-serif;
+            font-family: Instrument Sans,sans-serif;
             font-size: 14px; /* Smaller font for mobile */
             padding: 8px 12px; /* Add padding for the box */
             border-radius: 5px; /* Rounded corners */
@@ -53,16 +59,52 @@
             color: #2B4A94; /* Dark blue text on hover */
         }
 
+        /* Hamburger menu for mobile */
         .hamburger {
             display: none;
             font-size: 24px;
             cursor: pointer;
             color: #ffffff;
         }
+        
+        img {
+            width: 100%;
+            border-radius: 5px;
+            background-color: white;
+            mix-blend-mode: multiply; /* White becomes transparent */
+            filter: brightness(1.1) contrast(1.1); /* Enhances visibility */
+        }
+
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+        
+        h1 {
+            color: #2B4A94;
+            font-size: 36px;
+            margin-bottom: 20px;
+            padding-left: 20px; /* Add left padding to align text slightly to the left */
+            max-width: 1000px; /* Match the max-width of other headings for consistency */
+            margin-left: auto; /* Center the h1 within the max-width */
+            margin-right: auto; /* Center the h1 within the max-width */
+        }
+        
+        @media only screen and (max-width: 768px) {
+            h1 {
+                padding-left: 10px; /* Reduce padding for smaller screens */
+                font-size: 28px; /* Smaller font size for mobile */
+            }
+        }
 
         /* Container for offices */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -78,9 +120,24 @@
         /* Office grid layout */
         .office-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
         }
+
+        /* For tablets (768px and above) - 2 columns */
+        @media (min-width: 768px) {
+            .office-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* For laptops (992px and above) - keep 2 columns */
+        @media (min-width: 992px) {
+            .office-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
 
         /* Office card styling */
         .office-card {
@@ -120,7 +177,6 @@
             font-family: Instrument Sans, sans-serif;
         }
 
-        /* Footer styles */
         .footer {
             background-color: #2B4A94;
             color: white;
@@ -134,6 +190,10 @@
         .footer .logo {
             width: 100px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
         .footer .contacts, .footer .sites {
@@ -145,12 +205,14 @@
             margin-bottom: 15px;
             font-size: 18px;
             color: #FFD700; /* Gold color for headings */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul li {
@@ -170,8 +232,98 @@
         .footer .certification {
             width: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+   
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; /* Better for alignment */
+            justify-content: center;
+            align-items: center;
+            width: auto; /* Remove fixed width */
         }
 
+
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+        
+
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
+        
         .footer-bottom {
             text-align: center;
             background-color: #2B4A94; /* Dark purple */
@@ -181,42 +333,42 @@
             border-top: 1px solid #FFD700; /* Gold border */
         }
 
-        /* Responsive styles */
+        /* Responsive design */
         @media (max-width: 768px) {
-            .office-grid {
-                grid-template-columns: 1fr; /* 1 office per row on mobile */
-            }
-
-            h1 {
-                font-size: 24px; /* Smaller font for mobile */
-            }
-
-            .navigation ul {
-                display: none; /* Hide navigation by default on mobile */
+            .footer {
                 flex-direction: column;
-                gap: 10px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .contacts, .footer .sites {
+                text-align: center;
+            }
+
+            .footer .logo, .footer .certification {
+                margin-bottom: 30px;
+            }
+
+            /* Navigation for mobile */
+            .navigation ul {
+                display: none;
+                flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 100px;
                 right: 20px;
-                background-color: #2B4A94; /* Blue background */
-                padding: 10px;
-                border: 1px solid #ddd;
+                background-color: #2B4A94;
+                padding: 15px;
                 border-radius: 5px;
-                z-index: 1000; /* Ensure it appears above other content */
+                z-index: 1000;
+                width: 200px;
             }
 
             .navigation ul.active {
-                display: flex; /* Show navigation when active */
+                display: flex;
             }
 
             .hamburger {
-                display: block; /* Show hamburger menu */
-            }
-        }
-
-        @media (min-width: 769px) {
-            .office-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 offices per row on desktop */
+                display: block;
             }
         }
     </style>
@@ -245,22 +397,24 @@
         <div class="office-grid">
             <!-- Office 1 -->
             <div class="office-card">
-                <img src="https://dwxbwps5boihg.cloudfront.net/property/pictures/256337/IMG_2207_NDANRkxm3sUF2dMvxsjx_large.JPG?v=1436263324" alt="10 Boulevard">
-                <h2>Kuala Lumpur (HQ)</h2>
+                <img src="kuleoi.jpg" alt="10 Boulevard">
+                <h2>Kuala Lumpur (Headquaters)</h2>
                 <p>10 Boulevard, Block Camilia, C-3-43A Jln PJU 6A, 47400 PJ, Selangor, Malaysia</p>
+                <p><a href="tel:+60374967524">Tel: +60-3-74967524</a></p>
             </div>
 
             <!-- Office 2 -->
             <div class="office-card">
-                <img src="https://bangkokdevelopments.com/application/files/cache/thumbnails/76d7bda06006ae4f9afdf8feed0ec65d.jpg" alt="Forum Tower">
-                <h2>Bangkok (Head Supply chain)</h2>
+                <img src="bkkoei.jpg" alt="Forum Tower">
+                <h2>Bangkok</h2>
                 <p>Forum Tower 184/225 Ratchadapisek Rd, Khwaeng Huai Khwang, Keht Huai Khwang, Bangkok 10310, Thailand.</p>
+                <p><a href="tel:+6622486096">Tel: +66-2-2486096</a></p>
             </div>
 
             <!-- Office 3 -->
             <div class="office-card">
-                <img src="https://example.com/shenzhen.jpg" alt="Shenzhen Office">
-                <h2>Shenzhen (Head Supply chain)</h2>
+                <img src="2020092703242086.jpg" alt="Tianji Building">
+                <h2>Shenzhen</h2>
                 <p>6D1C, 6th floor, Tianji CD Building, Tian An Cyber Park, Futian District, Shenzhen, China 518040.</p>
             </div>
 
@@ -268,32 +422,36 @@
             <div class="office-card">
                 <img src="https://example.com/ningbo.jpg" alt="Ningbo Office">
                 <h2>Ningbo</h2>
-                <p>Eastern Business Centre, 15th floor room 1508 no.5, Ningbo, China</p>
+                <p>Room 1508, 15F NO.5 Building， Eastrn Bussiness Center， Ningbo， China 315100</p>
             </div>
 
             <!-- Office 5 -->
             <div class="office-card">
-                <img src="https://example.com/hochiminh.jpg" alt="Ho Chi Minh City Office">
+                <img src="hcmc2.jpg" alt="Zeta Building">
                 <h2>Ho Chi Minh City</h2>
-                <p>5th Floor, No. 15 Tran Khac Chan, Tan Dinh Ward, District 1, Ho Chi Minh City, Viet Nam.</p>
+                <p>5th Floor Zeta Tower, No. 15 Tran Khac Chan, Tan Dinh Ward, District 1, Ho Chi Minh City, Viet Nam.</p>
             </div>
 
             <!-- Office 6 -->
             <div class="office-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeuoyH_l6vl0GxIhACEzLefFGagoX0-mZC8w&s" alt="Gravitas Business Park">
+                <img src="peoei.jpg" alt="Gravitas Business Park">
                 <h2>Penang</h2>
                 <p>Gravitas Business Park, Unit B2-3-20, Lorong Pauh Jaya 1/3, Taman Pauh Jaya, 13500 Permatang Pauh, Penang, Malaysia</p>
             </div>
         </div>
     </div>
-
+    <br><br><br><br><br>
     <footer class="footer">
-        <img src="Screenshot 2025-02-22 164034.png" alt="Esp Logo" class="logo">
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+        </div>
         <div class="contacts">
             <h3>Contacts</h3>
             <ul>
-                <li><a href="mailto:email@email">email@email</a></li>
-                <li><a href="tel:telephone-no">telephone no</a></li>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+
             </ul>
         </div>
         <div class="sites">
@@ -306,12 +464,15 @@
                 <li><a href="htmlcont.html">Contacts page</a></li>
             </ul>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+        </div>
     </footer>
 
     <div class="footer-bottom">
         Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
     </div>
+
 
     <script>
         // Automatically update the copyright year

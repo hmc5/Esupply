@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-Supply Home Page</title>
     <style>
         /* Reset some default styles */
         body, ul, li, a {
@@ -19,10 +22,19 @@
             background-color: #2B4A94;
             border-bottom: 1px solid #fff;
         }
+       
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
+        }
 
         /* Logo styling */
-        .logo img {
-            height: 60px; /* Increased logo size */
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
         }
 
         /* Navigation bar styling */
@@ -65,11 +77,11 @@
             margin: 0;
         }
 
-        .mySlides, .mySlides2 {
+        .mySlides, .mySlides2, .mySlides3, .mySlides4, .mySlides5 {
             display: none;
         }
 
-        .slideshow-container2, .slideshow-container3 {
+        .slideshow-container2, .slideshow-container3, .slideshow-container4, .slideshow-container5 {
             max-width: 1000px;
             position: relative;
             margin: auto;
@@ -94,6 +106,9 @@
         img {
             width: 100%;
             border-radius: 5px;
+            background-color: white;
+            mix-blend-mode: multiply; /* White becomes transparent */
+            filter: brightness(1.1) contrast(1.1); /* Enhances visibility */
         }
 
         .image-grid {
@@ -127,12 +142,12 @@
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-
+        
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .dot, .dot2, .dot3 {
+        .dot, .dot2, .dot3, .dot4 {
             cursor: pointer;
             height: 10px;
             width: 10px;
@@ -143,38 +158,44 @@
             transition: background-color 0.6s ease;
         }
 
-        .active, .dot:hover, .dot2:hover, .dot3:hover {
+        .active, .dot:hover, .dot2:hover, .dot3:hover, .dot4:hover {
             background-color: #717171;
         }
-        /* Adjust specific logos to be narrower */
-        .slideshow-container3 .row .image-container img[alt="Amphenol"],
-        .slideshow-container3 .row .image-container img[alt="APTIV"],
-        .slideshow-container3 .row .image-container img[alt="Kyocera"],
-        .slideshow-container3 .row .image-container img[alt="Raychem"],
-        .slideshow-container3 .row .image-container img[alt="CJTconn"] {
-            width: 80%; /* Adjust width to make the logos narrower */
-            height: auto; /* Maintain aspect ratio */
-            object-fit: contain; /* Ensure the full logo is visible */
-        }
-        .slideshow-container3 .row .image-container img[alt="JST"],
-        .slideshow-container3 .row .image-container img[alt="Hirose"] {
-            width: 90%; /* Adjust width to make the logos narrower */
-            height: auto; /* Maintain aspect ratio */
-            object-fit: contain; /* Ensure the full logo is visible */
-        }
-        /* Add 10px space between rows */
-        .slideshow-container3 .image-grid {
-            gap: 10px; /* Space between rows */
-        }
-        /* New Carousel Styling */
-        .slideshow-container3 .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center; /* Align images vertically */
-            gap: 10px;
-        }
 
-        .slideshow-container3 .row .image-container {
+        /* Default size for desktop */
+        .featured-product img {
+            width: auto; /* or your current desktop size */
+            height: auto;
+        }
+        @media only screen and (max-width: 768px) {
+            /* Featured products images */
+            .slideshow-container2 .image-grid img {
+                width: 200px; /* Show 2 images per row */
+                height: auto;
+                margin-bottom: 10px;
+
+            }
+            
+            /* Adjust the container to better fit mobile */
+            .slideshow-container2 {
+                padding: 0 10px; /* Add some padding on sides */
+            }
+            
+            /* Make the navigation arrows smaller */
+            .slideshow-container2 .prev, 
+            .slideshow-container2 .next {
+                padding: 10px;
+                font-size: 16px;
+            }
+            .featured-product img {
+                width: 110px !important;
+                height: 110px !important;
+                object-fit: contain; /* ensures proper scaling */
+            }
+        }
+        /* Image container styling for both interconnectors and semiconductors */
+        .slideshow-container3 .row .image-container,
+        .slideshow-container4 .row .image-container{
             width: 23%; /* Adjust width as needed */
             height: 100px; /* Fixed height for all containers */
             display: flex;
@@ -182,38 +203,79 @@
             align-items: center;
             overflow: hidden; /* Hide overflow for rectangular images */
             border-radius: 5px;
+            background-color: #f5f5f5; /* Grey background */
+            padding: 10px; /* Add padding around the image */
+            margin: 5px;
         }
 
-        .slideshow-container3 .row .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensure images fill the container */
+        .slideshow-container3 .row .image-container img,
+        .slideshow-container4 .row .image-container img{
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain; /* Ensure images fit within container */
         }
 
+        
+        /* Add 10px space between rows */
+        .slideshow-container3 .image-grid,
+        .slideshow-container4 .image-grid{
+            gap: 10px; /* Space between rows */
+        }
+        
+        /* Grid Styling */
+        .slideshow-container3 .row,
+        .slideshow-container4 .row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Align images vertically */
+            gap: 10px;
+        }
+
+
+
+        /* Specific styling for the last row */
+        .slideshow-container3 .row:last-child,
+        .slideshow-container4 .row:last-child {
+            justify-content: flex-start; /* Left alignment for last row */
+            gap: 10px; /* Maintain consistent spacing */
+        }
+
+        /* Gap between image containers in the last row */
+        .slideshow-container3 .row:last-child .image-container,
+        .slideshow-container4 .row:last-child .image-container {
+            margin-right: 10px; /* Add right margin to maintain spacing */
+        }
         /* Media Queries for Responsiveness */
         @media only screen and (max-width: 768px) {
-            .slideshow-container3 .row {
+            .slideshow-container3 .row,
+            .slideshow-container4 .row{
                 flex-wrap: wrap; /* Allow wrapping */
                 justify-content: center; /* Center images */
             }
 
-            .slideshow-container3 .row img {
+            .slideshow-container3 .row .image-container,
+            .slideshow-container4 .row .image-container{
                 width: 45%; /* Show 2 images per row */
                 height: 80px; /* Adjust height for smaller screens */
                 margin-bottom: 10px; /* Add spacing between rows */
             }
 
-            .slideshow-container3 .image-grid {
+            .slideshow-container3 .image-grid,
+            .slideshow-container4 .image-grid{
                 gap: 5px; /* Reduce gap between rows */
             }
         }
 
         @media only screen and (max-width: 480px) {
-            .slideshow-container3 .row img {
+            .slideshow-container3 .row .image-container,
+            .slideshow-container4 .row .image-container{
                 width: 100%; /* Full width for images on very small screens */
                 height: 100px; /* Adjust height for very small screens */
             }
         }
+        
         /* Media queries for mobile responsiveness */
         @media only screen and (max-width: 768px) {
             .logo img {
@@ -268,6 +330,7 @@
                 font-size: 20px; /* Smaller font for mobile */
             }
         }
+        
         /* Application grid styling */
         .application-grid {
             display: flex;
@@ -304,6 +367,15 @@
             font-size: 20px;
         }
 
+        
+
+        /* Update the application grid container */
+        .application-grid {
+            background-color: transparent; /* Ensure grid itself is transparent */
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
         /* Hover effect for app items */
         .app-item:hover {
             transform: translateY(-5px); /* Slight lift on hover */
@@ -317,12 +389,15 @@
             }
 
             .app-item img {
-                width: 40px; /* Smaller icons for mobile */
-                height: 40px;
+                width: 80px; /* Smaller icons for mobile */
+                height: 80px;
             }
 
             .app-item p {
                 font-size: 14px; /* Smaller text for mobile */
+            }
+            .banner .logo img {
+                height: 60px; /* Slightly smaller for mobile */
             }
         }
 
@@ -341,6 +416,10 @@
         .footer .logo {
             width: 100px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
         .footer .contacts, .footer .sites {
@@ -379,8 +458,94 @@
         .footer .certification {
             width: 80px;
             margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
         }
 
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; 
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+
+
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+        /* Footer Logo Image */
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
         .footer-bottom {
             text-align: center;
             background-color: #2B4A94; /* Dark purple */
@@ -452,18 +617,18 @@
         <div class="slideshow-container2">
             <div class="mySlides2">
                 <div class="image-grid">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164051.png" alt="JST">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164103.png" alt="Molex">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164118.png" alt="TE">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164133.png" alt="Hirose">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164051.png" alt="JST1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164103.png" alt="Molex1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164118.png" alt="TE1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164133.png" alt="Hirose1">
                 </div>
             </div>
             <div class="mySlides2">
                 <div class="image-grid">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164143.png" alt="Yazaki">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164149.png" alt="Sumitomo">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164155.png" alt="IKIET">
-                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164217.png" alt="APTIV">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164143.png" alt="Yazaki1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164149.png" alt="Sumitomo1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164155.png" alt="IKIET1">
+                    <img src="https://ecstatic-jonaslai1206.wordpress.com/wp-content/uploads/2025/03/screenshot-2024-12-07-164217.png" alt="APTIV1">
                 </div>
             </div>
             <a class="prev" onclick="plusSlides(-1, 'center')">❮</a>
@@ -475,14 +640,12 @@
             <span class="dot2" onclick="currentSlide(2, 'center')"></span>
         </div>
     
-
-        <!-- Brands -->
-        <!-- Brands -->
         <br><br><br><br><br><br>
-        <h2>Interconnectors brands</h2>
-        <br><br><br>
+        <h2>Interconnectors Brands</h2>
+        <br><br>
+        <!-- Interconnectors Brands -->
         <div class="slideshow-container3">
-            <div class="mySlides3">
+            <div class="mySlides3" style="display: block;">
                 <div class="row">
                     <div class="image-container">
                         <img src="jst.png" alt="JST">
@@ -491,22 +654,22 @@
                         <img src="TE_Connectivity_logo.svg.png" alt="TE">
                     </div>
                     <div class="image-container">
-                        <img src="molex.png" alt="Molex">
+                        <img src="molex-logo1.png" alt="Molex">
                     </div>
                     <div class="image-container">
-                        <img src="yasaki.png" alt="Yazaki">
+                        <img src="yazaki2.webp" alt="Yazaki">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="image-container">
-                        <img src="hirose.png" alt="Hirose">
+                        <img src="hirose1.webp" alt="Hirose">
                     </div>
                     <div class="image-container">
-                        <img src="Sumitomo-Logo.jpg" alt="Sumitomo">
+                        <img src="sumitomo-logo (1)1.jpg" alt="Sumitomo">
                     </div>
                     <div class="image-container">
-                        <img src="ikiet.webp" alt="IKIET">
+                        <img src="ket1.png" alt="KET">
                     </div>
                     <div class="image-container">
                         <img src="jae.png" alt="JAE">
@@ -518,10 +681,10 @@
                         <img src="amphenol.png" alt="Amphenol">
                     </div>
                     <div class="image-container">
-                        <img src="jam.jpg" alt="JAM">
+                        <img src="jam12.png" alt="JAM">
                     </div>
                     <div class="image-container">
-                        <img src="kum.webp" alt="KUM">
+                        <img src="kum-logo-480x4801.avif" alt="KUM">
                     </div>
                     <div class="image-container">
                         <img src="panduit'.png" alt="Panduit">
@@ -530,7 +693,7 @@
                 <br>
                 <div class="row">
                     <div class="image-container">
-                        <img src="Yeonho Electronics.jpg" alt="Yeonho">
+                        <img src="yeonho1.jpg" alt="Yeonho">
                     </div>
                     <div class="image-container">
                         <img src="aptiv.jpg" alt="APTIV">
@@ -543,23 +706,95 @@
                     </div>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row" style="justify-content: flex-start;">
                     <div class="image-container">
-                        <img src="alphawitre.png" alt="AlphaWire">
+                        <img src="alpha-wire-logo1.png" alt="AlphaWire">
                     </div>
                     <div class="image-container">
                         <img src="raychem'.png" alt="Raychem">
                     </div>
-                    <div class="image-container">
-                        <!-- Empty container -->
-                    </div>
-                    <div class="image-container">
-                        <!-- Empty container -->
-                    </div>
+                    
                 </div>
             </div>
-            <!-- Add more slides if needed -->
         </div>
+        <br><br><br><br><br><br>
+        <h2>Semiconductor Brands</h2>
+        <br><br>
+        
+        <div class="slideshow-container4">
+            <div class="mySlides4" style="display: block;">
+                <div class="row">
+                    <div class="image-container">
+                        <img src="2560px-TexasInstruments-Logo.png" alt="Texas Instruments">
+                    </div>
+                    <div class="image-container">
+                        <img src="Vishay_Logo.svg" alt="VISHAY">
+                    </div>
+                    <div class="image-container">
+                        <img src="NXP_logo_RGB_web.avif" alt="NXP">
+                    </div>
+                    <div class="image-container">
+                        <img src="stmic....png" alt="STMicroelectronics">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="Muratamanifacturecorporationnewlogo.png" alt="muRata">
+                    </div>
+                    <div class="image-container">
+                        <img src="tdk.png" alt="TDK">
+                    </div>
+                    <div class="image-container">
+                        <img src="infineon.png" alt="Infineon">
+                    </div>
+                    <div class="image-container">
+                        <img src="kemet.png" alt="KEMET">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="3M.webp" alt="3M">
+                    </div>
+                    <div class="image-container">
+                        <img src="onsemi.png" alt="Onsemi">
+                    </div>
+                    <div class="image-container">
+                        <img src="microchip.png" alt="Microchip">
+                    </div>
+                    <div class="image-container">
+                        <img src="rohm.jpg" alt="ROHM semiconductors">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="OMRON_Logo.svg.png" alt="Omron">
+                    </div>
+                    <div class="image-container">
+                        <img src="toshiba11.png" alt="Toshiba">
+                    </div>
+                    <div class="image-container">
+                        <img src="diodes.png" alt="Diodes">
+                    </div>
+                    <div class="image-container">
+                        <img src="Wago-logo.png" alt="Wago">
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="justify-content: flex-start;">
+                    <div class="image-container">
+                        <img src="ITT_Corporation.svg" alt="ITT">
+                    </div>
+                    <div class="image-container">
+                        <img src="littelfuse.png" alt="Littelfuse">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
 
         <br><br><br><br><br><br>
         <h2>Application area</h2>
@@ -599,142 +834,178 @@
             </div>
         </div>
         <br><br><br><br>
+        
+        <br><br><br><br>
         <footer class="footer">
-            <img src="Screenshot 2025-02-22 164034.png" alt="Esp Logo" class="logo">
-            <div class="contacts">
-                <h3>Contacts</h3>
-                <ul>
-                    <li><a href="mailto:email@email">email@email</a></li>
-                    <li><a href="tel:telephone-no">telephone no</a></li>
-                </ul>
-            </div>
-            <div class="sites">
-                <h3>Our Sites</h3>
-                <ul>
-                    <li><a href="htmlhome.html">Home page</a></li>
-                    <li><a href="htmlabout.html">About page</a></li>
-                    <li><a href="htmlprod.html">Products page</a></li>
-                    <li><a href="htmloffi.html">Offices page</a></li>
-                    <li><a href="htmlcont.html">Contacts page</a></li>
-                </ul>
-            </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ISO_9001-2015.svg/2240px-ISO_9001-2015.svg.png" alt="ISO Certification" class="certification">
-        </footer>
-    
-        <div class="footer-bottom">
-            Copyright © <span id="a"></span> E-supply Electronics Ltd. All rights reserved.
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
         </div>
-    
-        <script>
-            // Automatically update the copyright year
-            document.getElementById("a").textContent = new Date().getFullYear();
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+           
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="htmlhome.html">Home page</a></li>
+                <li><a href="htmlabout.html">About page</a></li>
+                <li><a href="htmlprod.html">Products page</a></li>
+                <li><a href="htmloffi.html">Offices page</a></li>
+                <li><a href="htmlcont.html">Contacts page</a></li>
+            </ul>
+        </div>
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO 9001 Certified" class="certification-logo">
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
+    </div>
 
-            // Initialize slide indices for all carousels
-            let slideIndexTop = 1;
-            let slideIndexCenter = 1;
-            let slideIndexBottom = 1;
-            let slideIndexThird = 1;
-            let slideIntervalTop;
 
-            // Show initial slides
-            showSlides(slideIndexTop, 'top');
-            showSlides(slideIndexCenter, 'center');
-            showSlides(slideIndexBottom, 'bottom');
-            showSlides(slideIndexThird, 'third');
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+        // Toggle menu function for mobile
+        function toggleMenu() {
+            const nav = document.querySelector('.navigation ul');
+            nav.classList.toggle('active');
+        }
 
-            // Start auto-slide for the top carousel only
-            autoSlide('top');
-            // Function to auto-slide (only for the top carousel)
-            function autoSlide(carousel) {
-                if (carousel === 'top') {
-                    slideIntervalTop = setTimeout(function() {
-                        plusSlides(1, 'top');
-                    }, 7000); // 7 seconds interval
-                }
+        // Slideshow functions
+        let slideIndex = [1, 1, 1, 1, 1];
+        const slideshowTypes = ['top', 'center', 'inter', 'semi', 'bottom'];
+
+        // Initialize all slideshows
+        showSlides(1, 'top');
+        showSlides(1, 'center');
+
+        function plusSlides(n, type) {
+            let index;
+            switch(type) {
+                case 'top':
+                    index = 0;
+                    break;
+                case 'center':
+                    index = 1;
+                    break;
+                case 'inter':
+                    index = 2;
+                    break;
+                case 'semi':
+                    index = 3;
+                    break;
+                case 'bottom':
+                    index = 4;
+                    break;
             }
-            // Function to navigate slides
-            function plusSlides(n, carousel) {
-                if (carousel === 'top') {
-                    clearTimeout(slideIntervalTop); // Clear the interval when manually navigating
-                    showSlides(slideIndexTop += n, 'top');
-                    autoSlide('top'); // Restart the interval
-                } else if (carousel === 'center') {
-                    showSlides(slideIndexCenter += n, 'center');
-                } else if (carousel === 'bottom') {
-                    showSlides(slideIndexBottom += n, 'bottom');
-                } else if (carousel === 'third') {
-                    showSlides(slideIndexThird += n, 'third');
-                }
-            }
+            showSlides(slideIndex[index] += n, type);
+        }
 
-            // Function to set current slide
-            function currentSlide(n, carousel) {
-                if (carousel === 'top') {
-                    clearTimeout(slideIntervalTop); // Clear the interval when manually navigating
-                    showSlides(slideIndexTop = n, 'top');
-                    autoSlide('top'); // Restart the interval
-                } else if (carousel === 'center') {
-                    showSlides(slideIndexCenter = n, 'center');
-                } else if (carousel === 'bottom') {
-                    showSlides(slideIndexBottom = n, 'bottom');
-                } else if (carousel === 'third') {
-                    showSlides(slideIndexThird = n, 'third');
-                }
+        function currentSlide(n, type) {
+            let index;
+            switch(type) {
+                case 'top':
+                    index = 0;
+                    break;
+                case 'center':
+                    index = 1;
+                    break;
+                case 'inter':
+                    index = 2;
+                    break;
+                case 'semi':
+                    index = 3;
+                    break;
+                case 'bottom':
+                    index = 4;
+                    break;
             }
+            showSlides(slideIndex[index] = n, type);
+        }
 
-            // Function to display slides
-            function showSlides(n, carousel) {
-                let slides, dots;
-                if (carousel === 'top') {
+        function showSlides(n, type) {
+            let i;
+            let slides;
+            let dots;
+            let index;
+            
+            switch(type) {
+                case 'top':
                     slides = document.getElementsByClassName("mySlides");
                     dots = document.getElementsByClassName("dot");
-                    if (n > slides.length) { slideIndexTop = 1; }
-                    if (n < 1) { slideIndexTop = slides.length; }
-                } else if (carousel === 'center') {
+                    index = 0;
+                    break;
+                case 'center':
                     slides = document.getElementsByClassName("mySlides2");
                     dots = document.getElementsByClassName("dot2");
-                    if (n > slides.length) { slideIndexCenter = 1; }
-                    if (n < 1) { slideIndexCenter = slides.length; }
-                } else if (carousel === 'bottom') {
-                    slides = document.getElementsByClassName("mySlides2");
-                    dots = document.getElementsByClassName("dot2");
-                    if (n > slides.length) { slideIndexBottom = 1; }
-                    if (n < 1) { slideIndexBottom = slides.length; }
-                } else if (carousel === 'third') {
+                    index = 1;
+                    break;
+                case 'inter':
                     slides = document.getElementsByClassName("mySlides3");
                     dots = document.getElementsByClassName("dot3");
-                    if (n > slides.length) { slideIndexThird = 1; }
-                    if (n < 1) { slideIndexThird = slides.length; }
-                }
-
-                // Hide all slides
-                for (let i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-
-                // Remove active class from all dots
-                for (let i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-
-                // Show the current slide and activate the corresponding dot
-                slides[carousel === 'top' ? slideIndexTop - 1 : carousel === 'center' ? slideIndexCenter - 1 : carousel === 'bottom' ? slideIndexBottom - 1 : slideIndexThird - 1].style.display = "block";
-                dots[carousel === 'top' ? slideIndexTop - 1 : carousel === 'center' ? slideIndexCenter - 1 : carousel === 'bottom' ? slideIndexBottom - 1 : slideIndexThird - 1].className += " active";
+                    index = 2;
+                    break;
+                case 'semi':
+                    slides = document.getElementsByClassName("mySlides4");
+                    dots = document.getElementsByClassName("dot4");
+                    index = 3;
+                    break;
+                case 'bottom':
+                    slides = document.getElementsByClassName("mySlides5");
+                    dots = document.getElementsByClassName("dot5");
+                    index = 4;
+                    break;
             }
-
             
-
-            // Function to toggle mobile menu
-            function toggleMenu() {
-                const nav = document.querySelector('.navigation ul');
-                nav.classList.toggle('active');
+            if (n > slides.length) {slideIndex[index] = 1}    
+            if (n < 1) {slideIndex[index] = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
             }
-
             
-
-
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
             
-        </script>    
-    </body>
+            slides[slideIndex[index]-1].style.display = "block";  
+            if (dots.length > 0) {
+                dots[slideIndex[index]-1].className += " active";
+            }
+        }
+
+        // Auto slideshow for the top banner
+        let autoSlideIndex = 0;
+        autoShowSlides();
+
+        function autoShowSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            autoSlideIndex++;
+            if (autoSlideIndex > slides.length) {autoSlideIndex = 1}
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[autoSlideIndex-1].style.display = "block";
+            dots[autoSlideIndex-1].className += " active";
+            
+            // Change slide every 5 seconds
+            setTimeout(autoShowSlides, 5000);
+        }
+    </script>
+</body>
 </html>
-
