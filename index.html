@@ -147,7 +147,7 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .dot, .dot2, .dot3, .dot4 {
+        .dot, .dot2{
             cursor: pointer;
             height: 10px;
             width: 10px;
@@ -158,7 +158,7 @@
             transition: background-color 0.6s ease;
         }
 
-        .active, .dot:hover, .dot2:hover, .dot3:hover, .dot4:hover {
+        .active, .dot:hover, .dot2:hover{
             background-color: #717171;
         }
 
@@ -192,213 +192,7 @@
                 height: 110px !important;
                 object-fit: contain; /* ensures proper scaling */
             }
-        }
-        /* Image container styling for both interconnectors and semiconductors */
-        .slideshow-container3 .row .image-container,
-        .slideshow-container4 .row .image-container{
-            width: 23%; /* Adjust width as needed */
-            height: 100px; /* Fixed height for all containers */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Hide overflow for rectangular images */
-            border-radius: 5px;
-            background-color: #f5f5f5; /* Grey background */
-            padding: 10px; /* Add padding around the image */
-            margin: 5px;
-        }
-
-        .slideshow-container3 .row .image-container img,
-        .slideshow-container4 .row .image-container img{
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            max-height: 100%;
-            object-fit: contain; /* Ensure images fit within container */
-        }
-
         
-        /* Add 10px space between rows */
-        .slideshow-container3 .image-grid,
-        .slideshow-container4 .image-grid{
-            gap: 10px; /* Space between rows */
-        }
-        
-        /* Grid Styling */
-        .slideshow-container3 .row,
-        .slideshow-container4 .row{
-            display: flex;
-            justify-content: space-between;
-            align-items: center; /* Align images vertically */
-            gap: 10px;
-        }
-
-
-
-        /* Specific styling for the last row */
-        .slideshow-container3 .row:last-child,
-        .slideshow-container4 .row:last-child {
-            justify-content: flex-start; /* Left alignment for last row */
-            gap: 10px; /* Maintain consistent spacing */
-        }
-
-        /* Gap between image containers in the last row */
-        .slideshow-container3 .row:last-child .image-container,
-        .slideshow-container4 .row:last-child .image-container {
-            margin-right: 10px; /* Add right margin to maintain spacing */
-        }
-        /* Media Queries for Responsiveness */
-        @media only screen and (max-width: 768px) {
-            .slideshow-container3 .row,
-            .slideshow-container4 .row{
-                flex-wrap: wrap; /* Allow wrapping */
-                justify-content: center; /* Center images */
-            }
-
-            .slideshow-container3 .row .image-container,
-            .slideshow-container4 .row .image-container{
-                width: 45%; /* Show 2 images per row */
-                height: 80px; /* Adjust height for smaller screens */
-                margin-bottom: 10px; /* Add spacing between rows */
-            }
-
-            .slideshow-container3 .image-grid,
-            .slideshow-container4 .image-grid{
-                gap: 5px; /* Reduce gap between rows */
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            .slideshow-container3 .row .image-container,
-            .slideshow-container4 .row .image-container{
-                width: 100%; /* Full width for images on very small screens */
-                height: 100px; /* Adjust height for very small screens */
-            }
-        }
-        
-        /* Media queries for mobile responsiveness */
-        @media only screen and (max-width: 768px) {
-            .logo img {
-                height: 50px; /* Slightly smaller logo for mobile */
-            }
-
-            .navigation ul {
-                display: none; /* Hide navigation by default on mobile */
-                flex-direction: column;
-                gap: 10px;
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                background-color: #2B4A94; /* Blue background */
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                z-index: 1000; /* Ensure it appears above other content */
-            }
-
-            .navigation ul.active {
-                display: flex; /* Show navigation when active */
-            }
-
-            .navigation ul li a {
-                color: #ffffff; /* White text */
-                background-color: transparent; /* Remove background from links */
-                padding: 8px 12px; /* Add padding for the box */
-                border-radius: 5px; /* Rounded corners */
-            }
-
-            .navigation ul li a:hover {
-                background-color: #b1d5f8; /* Light blue on hover */
-                color: #2B4A94; /* Dark blue text on hover */
-            }
-
-            .hamburger {
-                display: block; /* Show hamburger menu */
-            }
-
-            .image-grid {
-                flex-direction: row; /* Keep images in a row */
-                justify-content: space-around; /* Space images evenly */
-            }
-
-            .image-grid img {
-                width: 48%; /* Show 2 images at once on mobile */
-                margin-bottom: 10px;
-            }
-
-            h2 {
-                font-size: 20px; /* Smaller font for mobile */
-            }
-        }
-        
-        /* Application grid styling */
-        .application-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .app-item {
-            width: calc(25% - 20px); /* 4 items in a row on desktop */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .app-item img {
-            width: 100px; /* Adjust icon size */
-            height: 100px;
-            margin-bottom: 30px;
-        }
-
-        .app-item p {
-            color: #000000;
-            font-weight: bold;
-            margin: 0;
-            font-family: Instrument Sans,sans-serif;
-            font-size: 20px;
-        }
-
-        
-
-        /* Update the application grid container */
-        .application-grid {
-            background-color: transparent; /* Ensure grid itself is transparent */
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        /* Hover effect for app items */
-        .app-item:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-        }
-
-        /* Media queries for mobile responsiveness */
-        @media only screen and (max-width: 768px) {
-            .app-item {
-                width: calc(50% - 20px); /* 2 items in a row on mobile */
-            }
-
-            .app-item img {
-                width: 80px; /* Smaller icons for mobile */
-                height: 80px;
-            }
-
-            .app-item p {
-                font-size: 14px; /* Smaller text for mobile */
-            }
-            .banner .logo img {
-                height: 60px; /* Slightly smaller for mobile */
-            }
         }
 
         /* Footer styling */
@@ -575,15 +369,20 @@
     </head>
     <body>
         <header class="banner">
-            <div class="logo">
-                <img src="Screenshot 2025-02-22 164034.png" alt="ESP logo">
+            <div style="display: flex; align-items: center;">
+                <div class="logo">
+                    <a href = "index.html"><img src="Screenshot 2025-02-22 164034.png" alt="ESP logo"></a>
+                </div>
+                <span style="color: white; font-weight: bold; font-size: 14px; margin-left: 10px; font-family: Arial, sans-serif;">     E-Supply Electronics</span>
             </div>
+            
             <nav class="navigation">
                 <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="htmlabout.html">About</a></li>
                     <li><a href="htmlprod.html">Products</a></li>
+                    <li><a href="htmlpart.html">Brands</a></li>
                     <li><a href="htmloffi.html">Offices</a></li>
                     <li><a href="htmlcont.html">Contact</a></li>
                 </ul>
@@ -640,200 +439,7 @@
             <span class="dot2" onclick="currentSlide(2, 'center')"></span>
         </div>
     
-        <br><br><br><br><br><br>
-        <h2>Interconnectors Brands</h2>
-        <br><br>
-        <!-- Interconnectors Brands -->
-        <div class="slideshow-container3">
-            <div class="mySlides3" style="display: block;">
-                <div class="row">
-                    <div class="image-container">
-                        <img src="jst.png" alt="JST">
-                    </div>
-                    <div class="image-container">
-                        <img src="TE_Connectivity_logo.svg.png" alt="TE">
-                    </div>
-                    <div class="image-container">
-                        <img src="molex-logo1.png" alt="Molex">
-                    </div>
-                    <div class="image-container">
-                        <img src="yazaki2.webp" alt="Yazaki">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="hirose1.webp" alt="Hirose">
-                    </div>
-                    <div class="image-container">
-                        <img src="sumitomo-logo (1)1.jpg" alt="Sumitomo">
-                    </div>
-                    <div class="image-container">
-                        <img src="ket1.png" alt="KET">
-                    </div>
-                    <div class="image-container">
-                        <img src="jae.png" alt="JAE">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="amphenol.png" alt="Amphenol">
-                    </div>
-                    <div class="image-container">
-                        <img src="jam12.png" alt="JAM">
-                    </div>
-                    <div class="image-container">
-                        <img src="kum-logo-480x4801.avif" alt="KUM">
-                    </div>
-                    <div class="image-container">
-                        <img src="panduit'.png" alt="Panduit">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="yeonho1.jpg" alt="Yeonho">
-                    </div>
-                    <div class="image-container">
-                        <img src="aptiv.jpg" alt="APTIV">
-                    </div>
-                    <div class="image-container">
-                        <img src="cjtconn.png" alt="CJTconn">
-                    </div>
-                    <div class="image-container">
-                        <img src="Kyocera_logo.svg.png" alt="Kyocera">
-                    </div>
-                </div>
-                <br>
-                <div class="row" style="justify-content: flex-start;">
-                    <div class="image-container">
-                        <img src="alpha-wire-logo1.png" alt="AlphaWire">
-                    </div>
-                    <div class="image-container">
-                        <img src="raychem'.png" alt="Raychem">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <br><br><br><br><br><br>
-        <h2>Semiconductor Brands</h2>
-        <br><br>
         
-        <div class="slideshow-container4">
-            <div class="mySlides4" style="display: block;">
-                <div class="row">
-                    <div class="image-container">
-                        <img src="2560px-TexasInstruments-Logo.png" alt="Texas Instruments">
-                    </div>
-                    <div class="image-container">
-                        <img src="Vishay_Logo.svg" alt="VISHAY">
-                    </div>
-                    <div class="image-container">
-                        <img src="NXP_logo_RGB_web.avif" alt="NXP">
-                    </div>
-                    <div class="image-container">
-                        <img src="stmic....png" alt="STMicroelectronics">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="Muratamanifacturecorporationnewlogo.png" alt="muRata">
-                    </div>
-                    <div class="image-container">
-                        <img src="tdk.png" alt="TDK">
-                    </div>
-                    <div class="image-container">
-                        <img src="infineon.png" alt="Infineon">
-                    </div>
-                    <div class="image-container">
-                        <img src="kemet.png" alt="KEMET">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="3M.webp" alt="3M">
-                    </div>
-                    <div class="image-container">
-                        <img src="onsemi.png" alt="Onsemi">
-                    </div>
-                    <div class="image-container">
-                        <img src="microchip.png" alt="Microchip">
-                    </div>
-                    <div class="image-container">
-                        <img src="rohm.jpg" alt="ROHM semiconductors">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="image-container">
-                        <img src="OMRON_Logo.svg.png" alt="Omron">
-                    </div>
-                    <div class="image-container">
-                        <img src="toshiba11.png" alt="Toshiba">
-                    </div>
-                    <div class="image-container">
-                        <img src="diodes.png" alt="Diodes">
-                    </div>
-                    <div class="image-container">
-                        <img src="Wago-logo.png" alt="Wago">
-                    </div>
-                </div>
-                <br>
-                <div class="row" style="justify-content: flex-start;">
-                    <div class="image-container">
-                        <img src="ITT_Corporation.svg" alt="ITT">
-                    </div>
-                    <div class="image-container">
-                        <img src="littelfuse.png" alt="Littelfuse">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
-
-        <br><br><br><br><br><br>
-        <h2>Application area</h2>
-        <br><br>
-        <div class="application-grid">
-            <div class="app-item">
-                <img src="icons8-automobile-100.png" alt="Automobile">
-                <p>Automobile</p>
-            </div>
-            <div class="app-item">
-                <img src="assembly.png" alt="Industry">
-                <p>Industry</p>
-            </div>
-            <div class="app-item">
-                <img src="global-network.png" alt="Network">
-                <p>Network</p>
-            </div>
-            <div class="app-item">
-                <img src="thunderbolt.png" alt="Energy">
-                <p>Energy</p>
-            </div>
-            <div class="app-item">
-                <img src="stethoscope.png" alt="Medical">
-                <p>Medical</p>
-            </div>
-            <div class="app-item">
-                <img src="smart-house.png" alt="Smart home">
-                <p>Smart home</p>
-            </div>
-            <div class="app-item">
-                <img src="oven.png" alt="Home appliances">
-                <p>Home appliances</p>
-            </div>
-            <div class="app-item">
-                <img src="volume 1.png" alt="Audio & video">
-                <p>Audio & video</p>
-            </div>
-        </div>
-        <br><br><br><br>
         
         <br><br><br><br>
         <footer class="footer">
@@ -855,6 +461,7 @@
                 <li><a href="index.html">Home page</a></li>
                 <li><a href="htmlabout.html">About page</a></li>
                 <li><a href="htmlprod.html">Products page</a></li>
+                <li><a href="htmlpart.html">Brands page</a></li>
                 <li><a href="htmloffi.html">Offices page</a></li>
                 <li><a href="htmlcont.html">Contacts page</a></li>
             </ul>

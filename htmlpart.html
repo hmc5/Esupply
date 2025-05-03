@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-Supply Brands Page</title>
+    <style>
+        /* Reset some default styles */
+        body, ul, li, a {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        /* Banner styling */
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #2B4A94;
+            border-bottom: 1px solid #fff;
+        }
+       
+        .banner .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block; /* Ensures background wraps properly */
+        }
+
+        /* Logo styling */
+        .banner .logo img {
+            height: 80px; /* Increased size */
+            width: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+        }
+
+        /* Navigation bar styling */
+        .navigation ul {
+            display: flex;
+            gap: 15px; /* Reduced gap for mobile */
+            background-color: #2B4A94;
+        }
+
+        .navigation ul li a {
+            color: #ffffff; /* White text */
+            font-weight: bold;
+            font-family: Instrument Sans,sans-serif;
+            font-size: 14px; /* Smaller font for mobile */
+            padding: 8px 12px; /* Add padding for the box */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #a5cdf6; /* Light blue on hover */
+            color: #2B4A94; /* Dark blue text on hover */
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+
+        .mySlides, .mySlides2, .mySlides3, .mySlides4, .mySlides5 {
+            display: none;
+        }
+
+        .slideshow-container2, .slideshow-container3, .slideshow-container4, .slideshow-container5 {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .slideshow-container{
+            max-width: 1200px;
+            position: relative;
+            margin: auto;
+        }
+        h1 {
+            color: #2B4A94;
+            font-size: 36px;
+            margin-bottom: 20px;
+            padding-left: 20px; /* Add left padding to align text slightly to the left */
+            max-width: 1000px; /* Match the max-width of other headings for consistency */
+            margin-left: auto; /* Center the h1 within the max-width */
+            margin-right: auto; /* Center the h1 within the max-width */
+        }
+        h2 {
+            font-family: Inter, sans-serif;
+            font-weight: bold;
+            color: #2B4A94;
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            font-size: 24px; /* Smaller font for mobile */
+            padding: 0 10px; /* Add padding for mobile */
+        }
+
+        img {
+            width: 100%;
+            border-radius: 5px;
+            background-color: white;
+            mix-blend-mode: multiply; /* White becomes transparent */
+            filter: brightness(1.1) contrast(1.1); /* Enhances visibility */
+        }
+
+        .image-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow wrapping for mobile */
+        }
+
+        .image-grid img {
+            width: 24%;
+            border-radius: 5px;
+        }
+
+
+        /* Image container styling for both interconnectors and semiconductors */
+        .slideshow-container3 .row .image-container,
+        .slideshow-container4 .row .image-container{
+            width: 23%; /* Adjust width as needed */
+            height: 100px; /* Fixed height for all containers */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide overflow for rectangular images */
+            border-radius: 5px;
+            background-color: #f5f5f5; /* Grey background */
+            padding: 10px; /* Add padding around the image */
+            margin: 5px;
+        }
+
+        .slideshow-container3 .row .image-container img,
+        .slideshow-container4 .row .image-container img{
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain; /* Ensure images fit within container */
+        }
+
+        
+        /* Add 10px space between rows */
+        .slideshow-container3 .image-grid,
+        .slideshow-container4 .image-grid{
+            gap: 10px; /* Space between rows */
+        }
+        
+        /* Grid Styling */
+        .slideshow-container3 .row,
+        .slideshow-container4 .row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Align images vertically */
+            gap: 10px;
+        }
+
+
+
+        /* Specific styling for the last row */
+        .slideshow-container3 .row:last-child,
+        .slideshow-container4 .row:last-child {
+            justify-content: flex-start; /* Left alignment for last row */
+            gap: 10px; /* Maintain consistent spacing */
+        }
+
+        /* Gap between image containers in the last row */
+        .slideshow-container3 .row:last-child .image-container,
+        .slideshow-container4 .row:last-child .image-container {
+            margin-right: 0px; /* Add right margin to maintain spacing */
+        }
+        /* Media Queries for Responsiveness */
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 28px; /* Smaller font for mobile */
+            }
+            .slideshow-container3 .row,
+            .slideshow-container4 .row{
+                flex-wrap: wrap; /* Allow wrapping */
+                justify-content: center; /* Center images */
+            }
+  
+    
+            .slideshow-container3 .row:last-child,
+            .slideshow-container4 .row:last-child {
+                justify-content: center; /* Center last row on mobile */
+            }
+            .slideshow-container3 .row .image-container,
+            .slideshow-container4 .row .image-container{
+                width: 45%; /* Show 2 images per row */
+                height: 80px; /* Adjust height for smaller screens */
+                margin-bottom: 10px; /* Add spacing between rows */
+            }
+
+            .slideshow-container3 .image-grid,
+            .slideshow-container4 .image-grid{
+                gap: 5px; /* Reduce gap between rows */
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .slideshow-container3 .row .image-container,
+            .slideshow-container4 .row .image-container{
+                width: 100%; /* Full width for images on very small screens */
+                height: 100px; /* Adjust height for very small screens */
+            }
+        }
+        
+        /* Media queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .logo img {
+                height: 50px; /* Slightly smaller logo for mobile */
+            }
+
+            .navigation ul {
+                display: none; /* Hide navigation by default on mobile */
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #2B4A94; /* Blue background */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                z-index: 1000; /* Ensure it appears above other content */
+            }
+
+            .navigation ul.active {
+                display: flex; /* Show navigation when active */
+            }
+
+            .navigation ul li a {
+                color: #ffffff; /* White text */
+                background-color: transparent; /* Remove background from links */
+                padding: 8px 12px; /* Add padding for the box */
+                border-radius: 5px; /* Rounded corners */
+            }
+
+            .navigation ul li a:hover {
+                background-color: #b1d5f8; /* Light blue on hover */
+                color: #2B4A94; /* Dark blue text on hover */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger menu */
+            }
+
+            .image-grid {
+                flex-direction: row; /* Keep images in a row */
+                justify-content: space-around; /* Space images evenly */
+            }
+
+            .image-grid img {
+                width: 48%; /* Show 2 images at once on mobile */
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 20px; /* Smaller font for mobile */
+            }
+        }
+        
+
+        
+
+        
+
+        /* Footer styling */
+        .footer {
+            background-color: #2B4A94;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            
+        }
+
+        .footer .logo {
+            width: 100px;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .footer .contacts, .footer .sites {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #FFD700; /* Gold color for headings */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #FFD700; /* Gold color on hover */
+        }
+
+        .footer .certification {
+            width: 80px;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .footer .logo {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex; 
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+
+
+        .footer .certification {
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+        /* Footer Logo Container */
+        .footer-logo-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;  
+            height: 100px;  
+            margin: 0 15px 20px 0;
+        }
+
+        /* Footer Logo Image */
+        .footer-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* ISO Certification Container */
+        .certification-container {
+            background-color: white;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            height: 100px; 
+            margin: 0 0 20px 15px;
+        }
+
+        /* ISO Certification Image */
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .footer-logo-container,
+            .certification-container {
+                margin: 0 auto 20px auto; /* Centered on mobile */
+                width: 160px; /* Slightly smaller on mobile */
+                height: 70px;
+            }
+        }
+
+        .footer .logo img,
+        .footer .certification img {
+            height: 60px; /* Adjust as needed */
+            width: auto;
+            max-width: 100%;
+            mix-blend-mode: normal; /* Override the global setting */
+            filter: none; /* Remove global filter */
+        }
+        .footer-bottom {
+            text-align: center;
+            background-color: #2B4A94; /* Dark purple */
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            border-top: 1px solid #FFD700; /* Gold border */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .contacts, .footer .sites {
+                text-align: center;
+            }
+
+            .footer .logo, .footer .certification {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <header class="banner">
+            <div style="display: flex; align-items: center;">
+                <div class="logo">
+                    <a href = "index.html"><img src="Screenshot 2025-02-22 164034.png" alt="ESP logo"></a>
+                </div>
+                <span style="color: white; font-weight: bold; font-size: 14px; margin-left: 10px; font-family: Arial, sans-serif;">     E-Supply Electronics</span>
+            </div>
+            
+            <nav class="navigation">
+                <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="htmlabout.html">About</a></li>
+                    <li><a href="htmlprod.html">Products</a></li>
+                    <li><a href="htmlpart.html">Brands</a></li>
+                    <li><a href="htmloffi.html">Offices</a></li>
+                    <li><a href="htmlcont.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <br><br><br>
+
+        <h1>Products Brands that we sell</h1>
+            
+        <br><br><br>
+        <h2>Interconnectors Brands</h2>
+        <br><br>
+        <!-- Interconnectors Brands -->
+        <div class="slideshow-container3">
+            <div class="mySlides3" style="display: block;">
+                <div class="row">
+                    <div class="image-container">
+                        <img src="jst.png" alt="JST">
+                    </div>
+                    <div class="image-container">
+                        <img src="TE_Connectivity_logo.svg.png" alt="TE">
+                    </div>
+                    <div class="image-container">
+                        <img src="molex-logo1.png" alt="Molex">
+                    </div>
+                    <div class="image-container">
+                        <img src="yazaki2.webp" alt="Yazaki">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="hirose1.webp" alt="Hirose">
+                    </div>
+                    <div class="image-container">
+                        <img src="sumitomo-logo (1)1.jpg" alt="Sumitomo">
+                    </div>
+                    <div class="image-container">
+                        <img src="ket1.png" alt="KET">
+                    </div>
+                    <div class="image-container">
+                        <img src="jae.png" alt="JAE">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="amphenol.png" alt="Amphenol">
+                    </div>
+                    <div class="image-container">
+                        <img src="jam12.png" alt="JAM">
+                    </div>
+                    <div class="image-container">
+                        <img src="kum-logo-480x4801.avif" alt="KUM">
+                    </div>
+                    <div class="image-container">
+                        <img src="panduit'.png" alt="Panduit">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="yeonho1.jpg" alt="Yeonho">
+                    </div>
+                    <div class="image-container">
+                        <img src="aptiv.jpg" alt="APTIV">
+                    </div>
+                    <div class="image-container">
+                        <img src="cjtconn.png" alt="CJTconn">
+                    </div>
+                    <div class="image-container">
+                        <img src="Kyocera_logo.svg.png" alt="Kyocera">
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="justify-content: flex-start;">
+                    <div class="image-container">
+                        <img src="alpha-wire-logo1.png" alt="AlphaWire">
+                    </div>
+                    <div class="image-container">
+                        <img src="raychem'.png" alt="Raychem">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br><br>
+        <h2>Semiconductor Brands</h2>
+        <br><br>
+        
+        <div class="slideshow-container4">
+            <div class="mySlides4" style="display: block;">
+                <div class="row">
+                    <div class="image-container">
+                        <img src="2560px-TexasInstruments-Logo.png" alt="Texas Instruments">
+                    </div>
+                    <div class="image-container">
+                        <img src="Vishay_Logo.svg" alt="VISHAY">
+                    </div>
+                    <div class="image-container">
+                        <img src="NXP_logo_RGB_web.avif" alt="NXP">
+                    </div>
+                    <div class="image-container">
+                        <img src="stmic....png" alt="STMicroelectronics">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="Muratamanifacturecorporationnewlogo.png" alt="muRata">
+                    </div>
+                    <div class="image-container">
+                        <img src="tdk.png" alt="TDK">
+                    </div>
+                    <div class="image-container">
+                        <img src="infineon.png" alt="Infineon">
+                    </div>
+                    <div class="image-container">
+                        <img src="kemet.png" alt="KEMET">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="3M.webp" alt="3M">
+                    </div>
+                    <div class="image-container">
+                        <img src="onsemi.png" alt="Onsemi">
+                    </div>
+                    <div class="image-container">
+                        <img src="microchip.png" alt="Microchip">
+                    </div>
+                    <div class="image-container">
+                        <img src="rohm.jpg" alt="ROHM semiconductors">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="image-container">
+                        <img src="OMRON_Logo.svg.png" alt="Omron">
+                    </div>
+                    <div class="image-container">
+                        <img src="toshiba11.png" alt="Toshiba">
+                    </div>
+                    <div class="image-container">
+                        <img src="diodes.png" alt="Diodes">
+                    </div>
+                    <div class="image-container">
+                        <img src="Wago-logo.png" alt="Wago">
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="justify-content: flex-start;">
+                    <div class="image-container">
+                        <img src="ITT_Corporation.svg" alt="ITT">
+                    </div>
+                    <div class="image-container">
+                        <img src="littelfuse.png" alt="Littelfuse">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <br><br><br><br>
+        <footer class="footer">
+        <div class="footer-logo-container">
+            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+        </div>
+        <div class="contacts">
+            <h3>Contacts</h3>
+            <ul>
+                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
+                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+           
+            </ul>
+        </div>
+        <div class="sites">
+            <h3>Our Sites</h3>
+            <ul>
+                <li><a href="index.html">Home page</a></li>
+                <li><a href="htmlabout.html">About page</a></li>
+                <li><a href="htmlprod.html">Products page</a></li>
+                <li><a href="htmlpart.html">Brands page</a></li> 
+                <li><a href="htmloffi.html">Offices page</a></li>
+                <li><a href="htmlcont.html">Contacts page</a></li>
+            </ul>
+        </div>
+        <div class="certification-container">
+            <img src="iso cert 90012015.png" alt="ISO 9001 Certified" class="certification-logo">
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        Copyright © <span id="year"></span> E-supply Electronics Ltd. All rights reserved.
+    </div>
+
+
+    <script>
+        // Automatically update the copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+        
+    </script>
+</body>
+</html>
