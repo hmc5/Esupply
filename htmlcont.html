@@ -28,36 +28,35 @@
             background-color: white;
             padding: 5px;
             border-radius: 5px;
-            display: inline-block; /* Ensures background wraps properly */
+            display: inline-block;
         }
-        /* Logo styling */
        
         .banner .logo img {
-            height: 80px; /* Increased size */
-            width: auto; /* Maintain aspect ratio */
-            display: block; /* Remove extra space below image */
+            height: 60px; /* Reduced for mobile */
+            width: auto;
+            display: block;
         }
 
         /* Navigation bar styling */
         .navigation ul {
             display: flex;
-            gap: 15px; /* Reduced gap for mobile */
+            gap: 10px;
             background-color: #2B4A94;
         }
 
         .navigation ul li a {
-            color: #ffffff; /* White text */
+            color: #ffffff;
             font-weight: bold;
-            font-size: 14px; /* Smaller font for mobile */
-            padding: 8px 12px; /* Add padding for the box */
-            border-radius: 5px; /* Rounded corners */
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 5px;
             font-family: Instrument Sans,sans-serif;
             transition: background-color 0.3s ease;
         }
 
         .navigation ul li a:hover {
-            background-color: #a5cdf6; /* Light blue on hover */
-            color: #2B4A94; /* Dark blue text on hover */
+            background-color: #a5cdf6;
+            color: #2B4A94;
         }
 
         /* Hamburger menu for mobile */
@@ -80,26 +79,27 @@
 
         h1 {
             color: #2B4A94;
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-align: center; /* Center-align h1 */
+            font-size: 28px; /* Smaller for mobile */
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 0 15px;
         }
 
         /* Header section with contact details */
         .header-section {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            text-align: center; /* Center-align content */
+            padding: 15px;
+            text-align: center;
         }
 
         .header-section .contact-details {
-            margin-top: 20px; /* Add space between h1 and contact details */
+            margin-top: 15px;
         }
 
         .header-section .contact-details p {
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 14px; /* Smaller for mobile */
+            margin-bottom: 8px;
             color: #2B4A94;
         }
 
@@ -116,13 +116,24 @@
         .form-container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            text-align: center; /* Center-align form */
+            padding: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column; /* Stack vertically by default */
+            gap: 30px;
+        }
+
+        .form-column {
+            width: 100%;
         }
 
         .form-container iframe {
-            width: 100%; /* Make the form responsive */
-            height: 818px; /* Fixed height for desktop */
+            width: 100%;
+            height: 600px; /* Reduced height for mobile */
+            border: none;
+            min-height: 500px; /* Minimum height */
         }
 
         /* Footer styling */
@@ -130,43 +141,67 @@
             background-color: #2B4A94;
             color: white;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 40px 20px;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            
+            flex-direction: column; /* Stack vertically on mobile */
+            align-items: center;
+            padding: 30px 15px;
+            text-align: center;
         }
 
-        .footer .logo {
-            width: 100px;
-            margin-bottom: 20px;
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .footer-logo-container, 
+        .certification-container {
             background-color: white;
-            padding: 5px;
+            padding: 8px;
             border-radius: 5px;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
         }
 
-        .footer .contacts, .footer .sites {
-            text-align: left;
-            margin-bottom: 20px;
+        .footer-logo, 
+        .certification-logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .footer .contacts, 
+        .footer .sites {
+            text-align: center;
+            margin-bottom: 25px;
+            flex: 1;
+            min-width: 200px;
         }
 
         .footer h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            color: #FFD700; /* Gold color for headings */
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #FFD700;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .footer ul {
-            list-style: none;
             padding: 0;
             margin: 0;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 14px;
         }
 
         .footer ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer ul li a {
@@ -176,123 +211,94 @@
         }
 
         .footer ul li a:hover {
-            color: #FFD700; /* Gold color on hover */
+            color: #FFD700;
         }
 
-        .footer .certification {
-            width: 80px;
-            margin-bottom: 20px;
-            background-color: white;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .footer .logo {
-            background-color: white;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-flex; /* Better for alignment */
-            justify-content: center;
-            align-items: center;
-            width: auto; /* Remove fixed width */
-        }
-
-    
-        .footer .certification {
-            background-color: white;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: auto;
-        }
-        /* Footer Logo Container */
-        .footer-logo-container {
-            background-color: white;
-            padding: 8px;
-            border-radius: 5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px;  
-            height: 100px;  
-            margin: 0 15px 20px 0;
-        }
-
-        /* Footer Logo Image */
-        .footer-logo {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* ISO Certification Container */
-        .certification-container {
-            background-color: white;
-            padding: 8px;
-            border-radius: 5px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100px; 
-            height: 100px; 
-            margin: 0 0 20px 15px;
-        }
-
-        /* ISO Certification Image */
-        .certification-logo {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .footer-logo-container,
-            .certification-container {
-                margin: 0 auto 20px auto; /* Centered on mobile */
-                width: 160px; /* Slightly smaller on mobile */
-                height: 70px;
-            }
-        }
- 
-        .footer .logo img,
-        .footer .certification img {
-            height: 60px; /* Adjust as needed */
-            width: auto;
-            max-width: 100%;
-            mix-blend-mode: normal; /* Override the global setting */
-            filter: none; /* Remove global filter */
-        }
         .footer-bottom {
             text-align: center;
-            background-color: #2B4A94; /* Dark purple */
+            background-color: #2B4A94;
             color: white;
-            padding: 15px;
-            font-size: 14px;
-            border-top: 1px solid #FFD700; /* Gold border */
+            padding: 12px;
+            font-size: 12px;
+            border-top: 1px solid #FFD700;
+            width: 100%;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .header-section .contact-details p {
+                font-size: 16px;
+            }
+            
+            .form-row {
+                flex-direction: row; /* Side by side on desktop */
+            }
+            
+            .form-container iframe {
+                height: 818px;
+            }
+            
             .footer {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                text-align: left;
+                padding: 40px 20px;
+            }
+            
+            .footer-logo-container, 
+            .certification-container {
+                margin: 0 15px 20px 0;
+            }
+            
+            .footer .contacts, 
+            .footer .sites {
+                text-align: left;
+            }
+            
+            .navigation ul {
+                gap: 15px;
+            }
+            
+            .banner .logo img {
+                height: 80px;
+            }
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 767px) {
+            .navigation ul {
+                display: none;
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #2B4A94;
+                z-index: 1000;
+                padding: 15px 0;
+            }
+            
+            .navigation ul.active {
+                display: flex;
+            }
+            
+            .navigation ul li {
+                width: 100%;
                 text-align: center;
             }
-
-            .footer .contacts, .footer .sites {
-                text-align: center;
+            
+            .navigation ul li a {
+                display: block;
+                padding: 10px;
             }
-
-            .footer .logo, .footer .certification {
-                margin-bottom: 30px;
+            
+            .hamburger {
+                display: block;
             }
         }
     </style>
@@ -301,9 +307,9 @@
     <header class="banner">
         <div style="display: flex; align-items: center;">
             <div class="logo">
-                <a href = "index.html"><img src="Screenshot 2025-02-22 164034.png" alt="ESP logo"></a>
+                <a href="index.html"><img src="Screenshot 2025-02-22 164034.png" alt="ESP logo"></a>
             </div>
-            <span style="color: white; font-weight: bold; font-size: 14px; margin-left: 10px; font-family: Arial, sans-serif;">     E-Supply Electronics</span>
+            <span style="color: white; font-weight: bold; font-size: 14px; margin-left: 10px; font-family: Arial, sans-serif;">E-Supply Electronics</span>
         </div>
         
         <nav class="navigation">
@@ -318,52 +324,54 @@
             </ul>
         </nav>
     </header>
-    <br><br><br><br>
 
     <!-- Header Section with Contact Details -->
-    <div class="header-section">
-        <h1>Contact Us</h1>
-        <div class="contact-details">
-            <p><strong>Email:</strong> <a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></p>
-            <p><strong>Phone Bangkok (Main):</strong> <a href="tel:+6622486096">+66-2-2486096</a></p>
-            <p><strong>Phone Kuala Lumpur:</strong> <a href="tel:+60374967524">+60-3-74967524</a></p>
-           
-        </div>
-    </div>
-
+    
+      <div class="header-section">
+        <h1>Contact Us</h1></div>
     <!-- Form Container -->
     <div class="form-container">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQcpHrYId4vuNFsDMWAovLMebaNY70rBjVWE0067XRoivNfw/viewform?embedded=true" width="100%" height="818" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <div class="form-row">
+            <div class="form-column">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdQcpHrYId4vuNFsDMWAovLMebaNY70rBjVWE0067XRoivNfw/viewform?embedded=true"></iframe>
+            </div>
+            <div class="form-column">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSec-xD3LTAFyLzPfIGpS_62rVbqAT0LmThPRaT6etUe3DkJ5g/viewform?embedded=true"></iframe>
+            </div>
+        </div>
     </div>
-    <br><br><br><br><br>
+
+
+ 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-logo-container">
-            <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
-        </div>
-        <div class="contacts">
-            <h3>Contacts</h3>
-            <ul>
-                <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th </a></li>
-                <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
-                <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
-
-
-            </ul>
-        </div>
-        <div class="sites">
-            <h3>Our Sites</h3>
-            <ul>
-                <li><a href="index.html">Home page</a></li>
-                <li><a href="htmlabout.html">About page</a></li>
-                <li><a href="htmlprod.html">Products page</a></li>
-                <li><a href="htmlpart.html">Brands page</a></li>
-                <li><a href="htmloffi.html">Offices page</a></li>
-                <li><a href="htmlcont.html">Contacts page</a></li>
-            </ul>
-        </div>
-        <div class="certification-container">
-            <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+        <div class="footer-content">
+            <div class="footer-logo-container">
+                <img src="Screenshot 2025-02-22 164034.png" alt="ESP Logo" class="footer-logo">
+            </div>
+            <div class="contacts">
+                <h3>Contacts</h3>
+                <ul>
+                    <li><a href="mailto:jl@e-supply.co.th">jl@e-supply.co.th</a></li>
+                    <li><a href="tel:+6622486096">+66-2-2486096 (Bangkok)</a></li>
+                    <li><a href="tel:+60374967524">+60-3-74967524 (Kuala Lumpur)</a></li>
+                </ul>
+            </div>
+            
+            <div class="sites">
+                <h3>Our Sites</h3>
+                <ul>
+                    <li><a href="index.html">Home page</a></li>
+                    <li><a href="htmlabout.html">About page</a></li>
+                    <li><a href="htmlprod.html">Products page</a></li>
+                    <li><a href="htmlpart.html">Brands page</a></li>
+                    <li><a href="htmloffi.html">Offices page</a></li>
+                    <li><a href="htmlcont.html">Contacts page</a></li>
+                </ul>
+            </div>
+            <div class="certification-container">
+                <img src="iso cert 90012015.png" alt="ISO Certification" class="certification-logo">
+            </div>
         </div>
     </footer>
 
@@ -380,6 +388,21 @@
 
         // Automatically update the copyright year
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Adjust iframe heights on load and resize
+        function adjustIframeHeights() {
+            const iframes = document.querySelectorAll('.form-container iframe');
+            const windowWidth = window.innerWidth;
+            
+            iframes.forEach(iframe => {
+                // Set different heights for mobile vs desktop
+                iframe.style.height = windowWidth < 768 ? '600px' : '818px';
+            });
+        }
+
+        // Run on load and resize
+        window.addEventListener('load', adjustIframeHeights);
+        window.addEventListener('resize', adjustIframeHeights);
     </script>
 </body>
 </html>
